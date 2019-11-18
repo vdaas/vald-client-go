@@ -1,0 +1,37 @@
+name: build protobuf
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: |
+          echo "Install dependencies"
+          sudo apt-get update
+          sudo apt-get install -y libprotobuf-dev libprotoc-dev protobuf-compiler
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - run: |
+          echo "checkout master"
+          git checkout master
+      - run: |
+          echo "build"
+          export GOPATH=$HOME/go
+          make vald
+          make all
+          make vald/sha/update
+      - run: |
+          echo "commit and push"
+          sha=`make vald/sha/print`
+          git config --global user.name 'VDaaS org'
+          git config --global user.email 'ci@vdaas.org'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git add .
+          git commit -m "[skip ci] Update [vald sha: ${sha}]"
+          git push
