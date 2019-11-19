@@ -23,6 +23,7 @@ jobs:
       - run: |
           echo "build"
           export GOPATH=$HOME/go
+          export PATH=$GOPATH/bin:$PATH
           make vald
           make all
           make vald/sha/update
