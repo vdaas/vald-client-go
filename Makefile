@@ -88,6 +88,10 @@ clean:
 ## build proto
 proto: $(PBGOS)
 
+$(PBGO_ROOT):
+	$(call mkdir, $@)
+	$(call rm, -rf, $@/*)
+
 $(PBGODIRS):
 	$(call mkdir, $@)
 	$(call rm, -rf, $@/*)
