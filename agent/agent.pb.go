@@ -8,7 +8,7 @@ import (
 	fmt "fmt"
 	_ "github.com/danielvladco/go-proto-gql/pb"
 	proto "github.com/gogo/protobuf/proto"
-	payload "github.com/vdaas/vald-client-go/go/payload"
+	payload "github.com/vdaas/vald-client-go/payload"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"

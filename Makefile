@@ -22,17 +22,16 @@ PKGNAME     = $(NAME)-client-$(LANGUAGE)
 PKGREPO     = github.com/$(REPO)/$(PKGNAME)
 
 VALD_SHA    = VALD_SHA
+VALD_DIR    = vald-origin
 
-PROTO_ROOT  = vald/apis/proto
-PBGO_ROOT   = go
+PROTO_ROOT  = $(VALD_DIR)/apis/proto
 PBGO_TMP    = tmp
 
 PROTOS      = vald/vald.proto agent/agent.proto payload/payload.proto
 PROTOS     := $(PROTOS:%=$(PROTO_ROOT)/%)
-PBGOS       = $(PROTOS:$(PROTO_ROOT)/%.proto=$(PBGO_ROOT)/%.pb.go)
+PBGOS       = $(PROTOS:$(PROTO_ROOT)/%.proto=%.pb.go)
 
-PROTODIRS   = $(shell find $(PROTO_ROOT) -type d | sed -e "s%$(PROTO_ROOT)/%%g" | grep -v "$(PROTO_ROOT)")
-PBGODIRS    = $(PROTODIRS:%=$(PBGO_ROOT)/%)
+PROTODIRS  := $(shell find $(PROTO_ROOT) -type d | sed -e "s%$(PROTO_ROOT)/%%g" | grep -v "$(PROTO_ROOT)")
 
 PROTO_PATHS = \
 	$(PROTODIRS:%=$(PROTO_ROOT)/%) \
@@ -61,7 +60,7 @@ endef
 
 .PHONY: all
 ## execute clean and proto
-all: clean proto
+all: clean proto mod
 
 .PHONY: help
 ## print all available commands
@@ -82,33 +81,31 @@ help:
 .PHONY: clean
 ## clean
 clean:
-	rm -rf $(PBGO_ROOT)
+	rm -rf $(PROTODIRS)
+	rm -rf $(PBGO_TMP)
+	rm -rf $(VALD_DIR)
 
 .PHONY: proto
 ## build proto
 proto: $(PBGOS)
 
-$(PBGO_ROOT):
+$(PROTODIRS):
 	$(call mkdir, $@)
 	$(call rm, -rf, $@/*)
 
-$(PBGODIRS):
-	$(call mkdir, $@)
-	$(call rm, -rf, $@/*)
-
-$(PBGOS): vald proto/deps $(PBGO_ROOT) $(PBGODIRS)
+$(PBGOS): $(VALD_DIR) proto/deps $(PROTODIRS)
 	@$(call green, "generating .pb.go files...")
 	$(call mkdir, $(PBGO_TMP))
 	protoc \
 		$(PROTO_PATHS:%=-I %) \
 		--gogofast_out=plugins=grpc:$(PBGO_TMP) \
-		$(patsubst $(PBGO_ROOT)/%.pb.go,$(PROTO_ROOT)/%.proto,$@)
-	mv $(PBGO_TMP)/$(VALDREPO)/apis/grpc/$(patsubst $(PBGO_ROOT)/%,%,$@) $(dir $@)
+		$(patsubst %.pb.go,$(PROTO_ROOT)/%.proto,$@)
+	mv $(PBGO_TMP)/$(VALDREPO)/apis/grpc/$@ $(dir $@)
 	rm -rf $(PBGO_TMP)
-	sed -i 's:$(VALDREPO)/apis/grpc:$(PKGREPO)/$(PBGO_ROOT):g' $@
+	sed -i 's:$(VALDREPO)/apis/grpc:$(PKGREPO):g' $@
 
-vald:
-	git clone --depth 1 https://$(VALDREPO)
+$(VALD_DIR):
+	git clone --depth 1 https://$(VALDREPO) $(VALD_DIR)
 
 .PHONY: vald/sha/print
 ## print VALD_SHA value
@@ -118,7 +115,14 @@ vald/sha/print:
 .PHONY: vald/sha/update
 ## update VALD_SHA value
 vald/sha/update: vald
-	(cd vald; git rev-parse HEAD > ../$(VALD_SHA))
+	(cd $(VALD_DIR); git rev-parse HEAD > ../$(VALD_SHA))
+
+.PHONY: mod
+## update go.mod
+mod:
+	go mod tidy
+	go mod vendor
+	rm -rf vendor
 
 .PHONY: proto/deps
 ## install proto deps
