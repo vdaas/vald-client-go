@@ -3,7 +3,6 @@ module github.com/vdaas/vald-client-go
 go 1.13
 
 require (
-	github.com/danielvladco/go-proto-gql/pb v0.6.1
 	github.com/envoyproxy/protoc-gen-validate v0.1.0
 	github.com/gogo/protobuf v1.3.1
 	golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3 // indirect
