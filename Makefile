@@ -38,7 +38,6 @@ PROTO_PATHS = \
 	$(GOPATH)/src/github.com/protocolbuffers/protobuf/src \
 	$(GOPATH)/src/github.com/gogo/protobuf/protobuf \
 	$(GOPATH)/src/github.com/googleapis/googleapis \
-	$(GOPATH)/src/github.com/danielvladco/go-proto-gql \
 	$(GOPATH)/src/github.com/envoyproxy/protoc-gen-validate
 
 MAKELISTS   = Makefile
@@ -96,6 +95,7 @@ $(PROTODIRS):
 $(PBGOS): $(VALD_DIR) proto/deps $(PROTODIRS)
 	@$(call green, "generating .pb.go files...")
 	$(call mkdir, $(PBGO_TMP))
+	sed -i -e '/^.*gql\.proto.*$$\|^.*gql\..*_type.*$$/d' $(patsubst %.pb.go,$(PROTO_ROOT)/%.proto,$@)
 	protoc \
 		$(PROTO_PATHS:%=-I %) \
 		--gogofast_out=plugins=grpc:$(PBGO_TMP) \
@@ -134,7 +134,6 @@ proto/deps: \
 	$(GOPATH)/bin/protoc-gen-gogofast \
 	$(GOPATH)/bin/protoc-gen-gogofaster \
 	$(GOPATH)/bin/protoc-gen-gogoslick \
-	$(GOPATH)/bin/protoc-gen-gql \
 	$(GOPATH)/bin/protoc-gen-grpc-gateway \
 	$(GOPATH)/bin/protoc-gen-swagger \
 	$(GOPATH)/bin/protoc-gen-validate \
@@ -182,9 +181,6 @@ $(GOPATH)/bin/protoc-gen-grpc-gateway:
 
 $(GOPATH)/bin/protoc-gen-swagger:
 	$(call go-get, github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger)
-
-$(GOPATH)/bin/protoc-gen-gql:
-	$(call go-get, github.com/danielvladco/go-proto-gql/protoc-gen-gql)
 
 $(GOPATH)/bin/protoc-gen-validate:
 	$(call go-get, github.com/envoyproxy/protoc-gen-validate)
