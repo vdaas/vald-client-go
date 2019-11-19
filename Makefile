@@ -105,6 +105,7 @@ $(PBGOS): vald proto/deps $(PBGO_ROOT) $(PBGODIRS)
 		$(patsubst $(PBGO_ROOT)/%.pb.go,$(PROTO_ROOT)/%.proto,$@)
 	mv $(PBGO_TMP)/$(VALDREPO)/apis/grpc/$(patsubst $(PBGO_ROOT)/%,%,$@) $(dir $@)
 	rm -rf $(PBGO_TMP)
+	sed -i 's:$(VALDREPO)/apis/grpc:$(PKGREPO)/$(PBGO_ROOT):g' $@
 
 vald:
 	git clone --depth 1 https://$(VALDREPO)
