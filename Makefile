@@ -27,7 +27,7 @@ VALD_DIR    = vald-origin
 PROTO_ROOT  = $(VALD_DIR)/apis/proto
 PBGO_TMP    = tmp
 
-PROTOS      = vald/vald.proto agent/agent.proto payload/payload.proto
+PROTOS      = gateway/vald/vald.proto agent/agent.proto payload/payload.proto
 PROTOS     := $(PROTOS:%=$(PROTO_ROOT)/%)
 PBGOS       = $(PROTOS:$(PROTO_ROOT)/%.proto=%.pb.go)
 
