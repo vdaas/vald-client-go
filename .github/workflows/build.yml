@@ -37,8 +37,8 @@ jobs:
           git add .
           git commit -m "[skip ci] Update [vald sha: ${sha}]"
           git push
-      - run: |
-          continue-on-error: true
+      - continue-on-error: true
+        run: |
           version=`make vald/version/print`
           git tag ${version}
           git push --tags
