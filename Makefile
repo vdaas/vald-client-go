@@ -117,7 +117,7 @@ vald/sha/print:
 ## update VALD_SHA value
 vald/sha/update: $(VALD_DIR)
 	(cd $(VALD_DIR); git rev-parse HEAD > ../$(VALD_SHA))
-	cp $(VALD_DIR)/versions/VALD_VERSION > $(VALD_VERSION)
+	cp $(VALD_DIR)/versions/VALD_VERSION $(VALD_VERSION)
 
 .PHONY: vald/version/print
 ## print VALD_VERSION value
