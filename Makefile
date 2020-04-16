@@ -21,8 +21,9 @@ LANGUAGE    = go
 PKGNAME     = $(NAME)-client-$(LANGUAGE)
 PKGREPO     = github.com/$(REPO)/$(PKGNAME)
 
-VALD_SHA    = VALD_SHA
-VALD_DIR    = vald-origin
+VALD_SHA     = VALD_SHA
+VALD_VERSION = VALD_VERSION
+VALD_DIR     = vald-origin
 
 PROTO_ROOT  = $(VALD_DIR)/apis/proto
 PBGO_TMP    = tmp
@@ -116,6 +117,12 @@ vald/sha/print:
 ## update VALD_SHA value
 vald/sha/update: $(VALD_DIR)
 	(cd $(VALD_DIR); git rev-parse HEAD > ../$(VALD_SHA))
+	cp $(VALD_DIR)/versions/VALD_VERSION > $(VALD_VERSION)
+
+.PHONY: vald/version/print
+## print VALD_VERSION value
+vald/version/print:
+	@cat $(VALD_VERSION)
 
 .PHONY: mod
 ## update go.mod
