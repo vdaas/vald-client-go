@@ -114,7 +114,7 @@ vald/sha/print:
 
 .PHONY: vald/sha/update
 ## update VALD_SHA value
-vald/sha/update: vald
+vald/sha/update: $(VALD_DIR)
 	(cd $(VALD_DIR); git rev-parse HEAD > ../$(VALD_SHA))
 
 .PHONY: mod
