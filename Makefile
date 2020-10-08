@@ -116,7 +116,6 @@ $(PROTODIRS):
 $(PBGOS): $(VALD_DIR) proto/deps $(PROTODIRS)
 	@$(call green, "generating .pb.go files...")
 	$(call mkdir, $(PBGO_TMP))
-	sed -i -e '/^.*gql\.proto.*$$\|^.*gql\..*_type.*$$/d' $(patsubst %.pb.go,$(PROTO_ROOT)/%.proto,$@)
 	protoc \
 		$(PROTO_PATHS:%=-I %) \
 		--gogofast_out=plugins=grpc:$(PBGO_TMP) \
