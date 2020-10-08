@@ -25,21 +25,37 @@ VALD_SHA     = VALD_SHA
 VALD_VERSION = VALD_VERSION
 VALD_DIR     = vald-origin
 
+PWD    := $(eval PWD := $(shell pwd))$(PWD)
+GOPATH := $(eval GOPATH := $(shell go env GOPATH))$(GOPATH)
+
 PROTO_ROOT  = $(VALD_DIR)/apis/proto
 PBGO_TMP    = tmp
 
-PROTOS      = gateway/vald/vald.proto agent/core/agent.proto payload/payload.proto
+PROTOS = \
+	gateway/vald/vald.proto \
+	agent/core/agent.proto \
+	payload/payload.proto \
+	v1/agent/core/agent.proto \
+	v1/gateway/vald/vald.proto \
+	v1/vald/filter.proto \
+	v1/vald/insert.proto \
+	v1/vald/object.proto \
+	v1/vald/remove.proto \
+	v1/vald/search.proto \
+	v1/vald/update.proto \
+	v1/vald/upsert.proto \
+	v1/payload/payload.proto
+
 PROTOS     := $(PROTOS:%=$(PROTO_ROOT)/%)
 PBGOS       = $(PROTOS:$(PROTO_ROOT)/%.proto=%.pb.go)
 
 PROTODIRS  := $(shell find $(PROTO_ROOT) -type d | sed -e "s%$(PROTO_ROOT)/%%g" | grep -v "$(PROTO_ROOT)")
 
 PROTO_PATHS = \
-	$(PROTODIRS:%=$(PROTO_ROOT)/%) \
-	$(GOPATH)/src/github.com/protocolbuffers/protobuf/src \
-	$(GOPATH)/src/github.com/gogo/protobuf/protobuf \
-	$(GOPATH)/src/github.com/googleapis/googleapis \
-	$(GOPATH)/src/github.com/envoyproxy/protoc-gen-validate
+	$(PWD) \
+	$(PWD)/$(VALD_DIR) \
+	$(GOPATH)/src \
+	$(GOPATH)/src/github.com/googleapis/googleapis
 
 MAKELISTS   = Makefile
 
@@ -132,8 +148,6 @@ vald/version/print:
 ## update go.mod
 mod:
 	go mod tidy
-	go mod vendor
-	rm -rf vendor
 
 .PHONY: proto/deps
 ## install proto deps
@@ -152,7 +166,8 @@ proto/deps: \
 	$(GOPATH)/bin/swagger \
 	$(GOPATH)/src/google.golang.org/genproto \
 	$(GOPATH)/src/github.com/protocolbuffers/protobuf \
-	$(GOPATH)/src/github.com/googleapis/googleapis
+	$(GOPATH)/src/github.com/googleapis/googleapis \
+	$(GOPATH)/src/github.com/envoyproxy/protoc-gen-validate
 
 $(GOPATH)/src/github.com/protocolbuffers/protobuf:
 	git clone \
@@ -165,6 +180,12 @@ $(GOPATH)/src/github.com/googleapis/googleapis:
 		--depth 1 \
 		https://github.com/googleapis/googleapis \
 		$(GOPATH)/src/github.com/googleapis/googleapis
+
+$(GOPATH)/src/github.com/envoyproxy/protoc-gen-validate:
+	git clone \
+		--depth 1 \
+		https://github.com/envoyproxy/protoc-gen-validate \
+		$(GOPATH)/src/github.com/envoyproxy/protoc-gen-validate
 
 $(GOPATH)/src/google.golang.org/genproto:
 	$(call go-get, google.golang.org/genproto/...)
