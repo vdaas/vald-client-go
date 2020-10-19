@@ -107,11 +107,16 @@ clean:
 
 .PHONY: proto
 ## build proto
-proto: $(PBGOS)
+proto: \
+	$(PBGOS) \
+	v1/vald/vald.go
 
 $(PROTODIRS):
 	$(call mkdir, $@)
 	$(call rm, -rf, $@/*)
+
+v1/vald/vald.go: $(VALD_DIR)
+	cp $(VALD_DIR)/apis/grpc/$@ $@
 
 $(PBGOS): $(VALD_DIR) proto/deps $(PROTODIRS)
 	@$(call green, "generating .pb.go files...")
