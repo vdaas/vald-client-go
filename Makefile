@@ -33,6 +33,7 @@ PBGO_TMP    = tmp
 
 PROTOS = \
 	v1/agent/core/agent.proto \
+	v1/errors/errors.proto \
 	v1/gateway/vald/vald.proto \
 	v1/vald/filter.proto \
 	v1/vald/insert.proto \
@@ -148,7 +149,7 @@ vald/version/print:
 .PHONY: mod
 ## update go.mod
 mod:
-	go mod tidy
+	GOPRIVATE=$(VALDREPO) go mod tidy
 
 .PHONY: proto/deps
 ## install proto deps
