@@ -33,7 +33,6 @@ PBGO_TMP    = tmp
 
 PROTOS = \
 	v1/agent/core/agent.proto \
-	v1/errors/errors.proto \
 	v1/gateway/vald/vald.proto \
 	v1/vald/filter.proto \
 	v1/vald/insert.proto \
@@ -168,7 +167,8 @@ proto/deps: \
 	$(GOPATH)/bin/swagger \
 	$(GOPATH)/src/google.golang.org/genproto \
 	$(GOPATH)/src/github.com/protocolbuffers/protobuf \
-	$(GOPATH)/src/github.com/googleapis/googleapis \
+	$(GOPATH)/src/github.com/gogo/protobuf \
+	$(GOPATH)/src/github.com/gogo/googleapis \
 	$(GOPATH)/src/github.com/envoyproxy/protoc-gen-validate
 
 $(GOPATH)/src/github.com/protocolbuffers/protobuf:
@@ -177,11 +177,17 @@ $(GOPATH)/src/github.com/protocolbuffers/protobuf:
 		https://github.com/protocolbuffers/protobuf \
 		$(GOPATH)/src/github.com/protocolbuffers/protobuf
 
-$(GOPATH)/src/github.com/googleapis/googleapis:
+$(GOPATH)/src/github.com/gogo/protobuf:
 	git clone \
 		--depth 1 \
-		https://github.com/googleapis/googleapis \
-		$(GOPATH)/src/github.com/googleapis/googleapis
+		https://github.com/gogo/protobuf \
+		$(GOPATH)/src/github.com/gogo/protobuf
+
+$(GOPATH)/src/github.com/gogo/googleapis:
+	git clone \
+		--depth 1 \
+		https://github.com/gogo/googleapis \
+		$(GOPATH)/src/github.com/gogo/googleapis
 
 $(GOPATH)/src/github.com/envoyproxy/protoc-gen-validate:
 	git clone \
