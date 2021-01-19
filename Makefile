@@ -52,7 +52,7 @@ PROTO_PATHS = \
 	$(PWD) \
 	$(PWD)/$(VALD_DIR) \
 	$(GOPATH)/src \
-	$(GOPATH)/src/github.com/googleapis/googleapis
+	$(GOPATH)/src/github.com/gogo/googleapis
 
 MAKELISTS   = Makefile
 
