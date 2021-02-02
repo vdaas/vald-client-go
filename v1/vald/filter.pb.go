@@ -37,34 +37,38 @@ func init() {
 }
 
 var fileDescriptor_44a6a830475c9bc4 = []byte{
-	// 431 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0x41, 0xcb, 0xd3, 0x30,
-	0x18, 0xfe, 0xe2, 0xe1, 0xfb, 0x20, 0x0c, 0xc1, 0x7a, 0x10, 0xab, 0x14, 0x37, 0x0f, 0x8a, 0xb2,
-	0xc4, 0xe9, 0x41, 0xf0, 0xb8, 0x83, 0x20, 0x4c, 0x94, 0x0d, 0x77, 0xf0, 0x32, 0xd2, 0x36, 0xcb,
-	0x22, 0x5d, 0xdf, 0x98, 0xa4, 0x05, 0xaf, 0xfe, 0x05, 0xff, 0x90, 0xc7, 0x1d, 0x05, 0xff, 0x80,
-	0x6c, 0x1e, 0xfc, 0x19, 0xd2, 0x64, 0x1d, 0x9d, 0x54, 0xe9, 0x64, 0xa7, 0xa6, 0x79, 0x9f, 0xe7,
-	0x7d, 0xde, 0xf7, 0x21, 0x3c, 0xf8, 0x71, 0xc9, 0xb2, 0x74, 0x08, 0x5a, 0x0a, 0x99, 0x53, 0xa6,
-	0xa4, 0xa1, 0x4a, 0x83, 0x05, 0x5a, 0x8e, 0x68, 0x55, 0xa1, 0x4b, 0x99, 0x59, 0xae, 0x89, 0xbb,
-	0x0c, 0xae, 0xaa, 0x2b, 0x52, 0x8e, 0xc2, 0xfb, 0xc7, 0x48, 0xc5, 0x3e, 0x65, 0xc0, 0xd2, 0xfa,
-	0xeb, 0xd1, 0xe1, 0x50, 0x48, 0xbb, 0x2a, 0x62, 0x92, 0xc0, 0x9a, 0x0a, 0x10, 0xe0, 0xf1, 0x71,
-	0xb1, 0x74, 0x7f, 0x9e, 0x5c, 0x9d, 0xf6, 0xf0, 0xe7, 0x7f, 0xc2, 0x05, 0x80, 0xc8, 0xb8, 0x53,
-	0xf2, 0xc7, 0x6a, 0x3e, 0xca, 0xf2, 0x1c, 0x2c, 0xb3, 0x12, 0x72, 0xe3, 0x89, 0x4f, 0x7f, 0x5d,
-	0xe1, 0xcb, 0x97, 0x6e, 0xcc, 0x60, 0x85, 0x7b, 0x33, 0xce, 0x74, 0xb2, 0x7a, 0x13, 0x7f, 0xe0,
-	0x89, 0x0d, 0xee, 0x91, 0x7a, 0xa4, 0x72, 0x44, 0x7c, 0x85, 0xf8, 0xd2, 0x94, 0x7f, 0x2c, 0xb8,
-	0xb1, 0xe1, 0x9d, 0x16, 0xc4, 0x94, 0x1b, 0x05, 0xb9, 0xe1, 0x83, 0xdb, 0x9f, 0xbf, 0xff, 0xfc,
-	0x72, 0xed, 0xe6, 0xe0, 0x3a, 0x35, 0xae, 0x42, 0xc1, 0x71, 0x5f, 0xa0, 0x47, 0xc1, 0x02, 0x07,
-	0x33, 0xab, 0x39, 0x5b, 0x9f, 0xa8, 0xd7, 0x6f, 0x41, 0xf8, 0x46, 0x07, 0xd5, 0x8b, 0x87, 0xe8,
-	0x09, 0x0a, 0x16, 0xb8, 0xf7, 0x2a, 0x37, 0x5c, 0xdb, 0x7d, 0xeb, 0x5b, 0x4d, 0xa2, 0xbf, 0x23,
-	0xe3, 0x0c, 0xe2, 0xe3, 0x0d, 0xf6, 0x85, 0x09, 0x24, 0xce, 0xa2, 0xc6, 0x06, 0xd2, 0x35, 0x6b,
-	0x6c, 0x30, 0xaf, 0x37, 0xe8, 0x26, 0xd3, 0x6f, 0x29, 0x78, 0xfe, 0x41, 0xcc, 0x0f, 0x3e, 0xc1,
-	0x37, 0x5e, 0x17, 0x99, 0x95, 0xdd, 0xda, 0xde, 0xfd, 0xc7, 0xf4, 0x66, 0x70, 0x51, 0xd9, 0xf0,
-	0x4e, 0xa5, 0xcc, 0xf2, 0x33, 0xd9, 0x50, 0xb8, 0x66, 0x6d, 0x36, 0x74, 0x93, 0x39, 0xd9, 0x86,
-	0x6e, 0x6d, 0x3b, 0xd9, 0x70, 0xc6, 0xd7, 0x50, 0xa8, 0xbf, 0xbd, 0x86, 0x6e, 0x32, 0xff, 0x61,
-	0xc3, 0x19, 0x5e, 0xc3, 0x58, 0x6c, 0xb6, 0x11, 0xfa, 0xb6, 0x8d, 0xd0, 0x8f, 0x6d, 0x84, 0xbe,
-	0xee, 0x22, 0xb4, 0xd9, 0x45, 0x08, 0x87, 0xa0, 0x05, 0x29, 0x53, 0xc6, 0x0c, 0x71, 0x01, 0xc5,
-	0x94, 0xac, 0xf8, 0xd5, 0x79, 0x8c, 0xe7, 0x2c, 0x4b, 0x7d, 0x3a, 0xbc, 0x45, 0xef, 0x1f, 0x34,
-	0x32, 0xc6, 0x11, 0x7c, 0xc8, 0xf9, 0x8c, 0xd1, 0x2a, 0xa9, 0x63, 0x2f, 0xbe, 0x74, 0xd1, 0xf2,
-	0xec, 0x77, 0x00, 0x00, 0x00, 0xff, 0xff, 0xa1, 0xe6, 0x3d, 0x77, 0x1f, 0x05, 0x00, 0x00,
+	// 486 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x55, 0x41, 0x6b, 0x14, 0x31,
+	0x14, 0x36, 0x1e, 0x2a, 0x84, 0x22, 0x38, 0x1e, 0xc4, 0xb5, 0x0c, 0x76, 0x64, 0x51, 0x94, 0x26,
+	0xae, 0x1e, 0x04, 0x8f, 0x3d, 0x08, 0x82, 0xa2, 0xb4, 0xe8, 0xc1, 0x8b, 0x64, 0x67, 0xd2, 0x6c,
+	0x64, 0x76, 0x12, 0x93, 0xcc, 0x80, 0xe0, 0xc9, 0xbf, 0xe0, 0xdf, 0xf0, 0x47, 0x78, 0xec, 0x51,
+	0xf0, 0x0f, 0xc8, 0xd6, 0x1f, 0x22, 0xc9, 0xeb, 0x2e, 0x9b, 0x9a, 0x69, 0x99, 0xed, 0x69, 0xb3,
+	0xf3, 0xde, 0xfb, 0xbe, 0x7c, 0xdf, 0x7b, 0xbc, 0xe0, 0x47, 0x1d, 0xab, 0xab, 0x3d, 0x65, 0xa4,
+	0x90, 0x0d, 0x65, 0x5a, 0x5a, 0xaa, 0x8d, 0x72, 0x8a, 0x76, 0x13, 0xea, 0x23, 0xf4, 0x48, 0xd6,
+	0x8e, 0x1b, 0x12, 0x3e, 0x66, 0xd7, 0xfc, 0x27, 0xd2, 0x4d, 0x46, 0xf7, 0xe2, 0x4c, 0xcd, 0xbe,
+	0xd4, 0x8a, 0x55, 0xcb, 0x5f, 0xc8, 0x1e, 0xed, 0x09, 0xe9, 0x66, 0xed, 0x94, 0x94, 0x6a, 0x4e,
+	0x85, 0x12, 0x0a, 0xf2, 0xa7, 0xed, 0x51, 0xf8, 0x07, 0xc5, 0xfe, 0x74, 0x9a, 0xfe, 0xec, 0x6c,
+	0xba, 0x50, 0x4a, 0xd4, 0x3c, 0x30, 0xc1, 0xd1, 0xdf, 0x8f, 0xb2, 0xa6, 0x51, 0x8e, 0x39, 0xa9,
+	0x1a, 0x0b, 0x85, 0x4f, 0x7e, 0x60, 0xbc, 0xf5, 0x22, 0x5c, 0x33, 0x9b, 0xe1, 0xed, 0x43, 0xce,
+	0x4c, 0x39, 0x7b, 0x33, 0xfd, 0xc4, 0x4b, 0x97, 0xdd, 0x25, 0xcb, 0x2b, 0x75, 0x13, 0x02, 0x11,
+	0x02, 0xa1, 0x03, 0xfe, 0xb9, 0xe5, 0xd6, 0x8d, 0xee, 0x24, 0x32, 0x0e, 0xb8, 0xd5, 0xaa, 0xb1,
+	0xbc, 0xb8, 0xfd, 0xed, 0xf7, 0xdf, 0xef, 0x57, 0x6f, 0x16, 0xd7, 0xa9, 0x0d, 0x11, 0xaa, 0x42,
+	0xed, 0x73, 0xf4, 0x30, 0xfb, 0x8a, 0x6f, 0xbc, 0x6e, 0x6b, 0x27, 0x23, 0xba, 0x71, 0x02, 0x2c,
+	0x64, 0xc5, 0x9c, 0x3b, 0xe7, 0x70, 0xda, 0xa2, 0x08, 0xa4, 0x3b, 0xc5, 0xad, 0x98, 0x94, 0xce,
+	0x3d, 0x90, 0xae, 0xb9, 0x67, 0xff, 0x88, 0xb3, 0x43, 0x67, 0x38, 0x9b, 0x0f, 0x54, 0xbb, 0x9b,
+	0xc8, 0x00, 0xa0, 0x95, 0xe6, 0x2b, 0x0f, 0xd0, 0x63, 0xe4, 0x8d, 0x7c, 0xd9, 0x58, 0x6e, 0x5c,
+	0x0a, 0x1a, 0x22, 0xe7, 0x19, 0x09, 0x21, 0xf2, 0x4a, 0x95, 0xa1, 0x53, 0x6b, 0x46, 0xca, 0x50,
+	0xbb, 0x66, 0xe4, 0x4a, 0xca, 0x40, 0xbe, 0xdd, 0x04, 0x1f, 0x00, 0xad, 0x58, 0x41, 0xca, 0xb2,
+	0x53, 0x11, 0xfe, 0x38, 0x81, 0x7f, 0x51, 0xa7, 0xce, 0x88, 0x5a, 0xef, 0x54, 0xa4, 0x2a, 0xea,
+	0xd4, 0x0c, 0x6f, 0xbf, 0xd3, 0x15, 0x73, 0x3c, 0x25, 0x0c, 0x22, 0x9b, 0x19, 0xd9, 0x86, 0xda,
+	0x94, 0x91, 0x03, 0xf9, 0x06, 0x1b, 0x19, 0xe1, 0x8f, 0x13, 0xf8, 0x97, 0x30, 0x32, 0x52, 0xf5,
+	0xbf, 0x91, 0x7d, 0x13, 0x02, 0x91, 0x4d, 0x8d, 0xec, 0x9b, 0xc8, 0x81, 0x7c, 0x1b, 0x18, 0xd9,
+	0x37, 0x91, 0xa7, 0xf8, 0x97, 0x32, 0xb2, 0x67, 0x22, 0xf7, 0xc5, 0xf1, 0x22, 0x47, 0xbf, 0x16,
+	0x39, 0xfa, 0xb3, 0xc8, 0xd1, 0xcf, 0x93, 0x1c, 0x1d, 0x9f, 0xe4, 0x08, 0x8f, 0x94, 0x11, 0xa4,
+	0xab, 0x18, 0xb3, 0x24, 0x2c, 0x79, 0xa6, 0xa5, 0x67, 0xf0, 0xe7, 0x7d, 0xfc, 0x9e, 0xd5, 0x15,
+	0x6c, 0xd8, 0xb7, 0xe8, 0xc3, 0xfd, 0xb5, 0x3d, 0x1d, 0x0a, 0xe0, 0xa1, 0x80, 0x3d, 0x6d, 0x74,
+	0xb9, 0x7c, 0x3a, 0xa6, 0x5b, 0x61, 0x3d, 0x3f, 0xfd, 0x17, 0x00, 0x00, 0xff, 0xff, 0x94, 0xba,
+	0x55, 0xc8, 0x63, 0x06, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -80,16 +84,17 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type FilterClient interface {
 	SearchObject(ctx context.Context, in *payload.Search_ObjectRequest, opts ...grpc.CallOption) (*payload.Search_Response, error)
+	MultiSearchObject(ctx context.Context, in *payload.Search_MultiObjectRequest, opts ...grpc.CallOption) (*payload.Search_Responses, error)
 	StreamSearchObject(ctx context.Context, opts ...grpc.CallOption) (Filter_StreamSearchObjectClient, error)
-	InsertObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Location, error)
+	InsertObject(ctx context.Context, in *payload.Insert_ObjectRequest, opts ...grpc.CallOption) (*payload.Object_Location, error)
 	StreamInsertObject(ctx context.Context, opts ...grpc.CallOption) (Filter_StreamInsertObjectClient, error)
-	MultiInsertObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Locations, error)
-	UpdateObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Location, error)
+	MultiInsertObject(ctx context.Context, in *payload.Insert_MultiObjectRequest, opts ...grpc.CallOption) (*payload.Object_Locations, error)
+	UpdateObject(ctx context.Context, in *payload.Update_ObjectRequest, opts ...grpc.CallOption) (*payload.Object_Location, error)
 	StreamUpdateObject(ctx context.Context, opts ...grpc.CallOption) (Filter_StreamUpdateObjectClient, error)
-	MultiUpdateObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Locations, error)
-	UpsertObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Location, error)
+	MultiUpdateObject(ctx context.Context, in *payload.Update_MultiObjectRequest, opts ...grpc.CallOption) (*payload.Object_Locations, error)
+	UpsertObject(ctx context.Context, in *payload.Upsert_ObjectRequest, opts ...grpc.CallOption) (*payload.Object_Location, error)
 	StreamUpsertObject(ctx context.Context, opts ...grpc.CallOption) (Filter_StreamUpsertObjectClient, error)
-	MultiUpsertObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Locations, error)
+	MultiUpsertObject(ctx context.Context, in *payload.Upsert_MultiObjectRequest, opts ...grpc.CallOption) (*payload.Object_Locations, error)
 }
 
 type filterClient struct {
@@ -103,6 +108,15 @@ func NewFilterClient(cc *grpc.ClientConn) FilterClient {
 func (c *filterClient) SearchObject(ctx context.Context, in *payload.Search_ObjectRequest, opts ...grpc.CallOption) (*payload.Search_Response, error) {
 	out := new(payload.Search_Response)
 	err := c.cc.Invoke(ctx, "/vald.v1.Filter/SearchObject", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *filterClient) MultiSearchObject(ctx context.Context, in *payload.Search_MultiObjectRequest, opts ...grpc.CallOption) (*payload.Search_Responses, error) {
+	out := new(payload.Search_Responses)
+	err := c.cc.Invoke(ctx, "/vald.v1.Filter/MultiSearchObject", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -140,7 +154,7 @@ func (x *filterStreamSearchObjectClient) Recv() (*payload.Search_StreamResponse,
 	return m, nil
 }
 
-func (c *filterClient) InsertObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Location, error) {
+func (c *filterClient) InsertObject(ctx context.Context, in *payload.Insert_ObjectRequest, opts ...grpc.CallOption) (*payload.Object_Location, error) {
 	out := new(payload.Object_Location)
 	err := c.cc.Invoke(ctx, "/vald.v1.Filter/InsertObject", in, out, opts...)
 	if err != nil {
@@ -159,7 +173,7 @@ func (c *filterClient) StreamInsertObject(ctx context.Context, opts ...grpc.Call
 }
 
 type Filter_StreamInsertObjectClient interface {
-	Send(*payload.Object_Blob) error
+	Send(*payload.Insert_ObjectRequest) error
 	Recv() (*payload.Object_StreamLocation, error)
 	grpc.ClientStream
 }
@@ -168,7 +182,7 @@ type filterStreamInsertObjectClient struct {
 	grpc.ClientStream
 }
 
-func (x *filterStreamInsertObjectClient) Send(m *payload.Object_Blob) error {
+func (x *filterStreamInsertObjectClient) Send(m *payload.Insert_ObjectRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
@@ -180,7 +194,7 @@ func (x *filterStreamInsertObjectClient) Recv() (*payload.Object_StreamLocation,
 	return m, nil
 }
 
-func (c *filterClient) MultiInsertObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Locations, error) {
+func (c *filterClient) MultiInsertObject(ctx context.Context, in *payload.Insert_MultiObjectRequest, opts ...grpc.CallOption) (*payload.Object_Locations, error) {
 	out := new(payload.Object_Locations)
 	err := c.cc.Invoke(ctx, "/vald.v1.Filter/MultiInsertObject", in, out, opts...)
 	if err != nil {
@@ -189,7 +203,7 @@ func (c *filterClient) MultiInsertObject(ctx context.Context, in *payload.Object
 	return out, nil
 }
 
-func (c *filterClient) UpdateObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Location, error) {
+func (c *filterClient) UpdateObject(ctx context.Context, in *payload.Update_ObjectRequest, opts ...grpc.CallOption) (*payload.Object_Location, error) {
 	out := new(payload.Object_Location)
 	err := c.cc.Invoke(ctx, "/vald.v1.Filter/UpdateObject", in, out, opts...)
 	if err != nil {
@@ -208,7 +222,7 @@ func (c *filterClient) StreamUpdateObject(ctx context.Context, opts ...grpc.Call
 }
 
 type Filter_StreamUpdateObjectClient interface {
-	Send(*payload.Object_Blob) error
+	Send(*payload.Update_ObjectRequest) error
 	Recv() (*payload.Object_StreamLocation, error)
 	grpc.ClientStream
 }
@@ -217,7 +231,7 @@ type filterStreamUpdateObjectClient struct {
 	grpc.ClientStream
 }
 
-func (x *filterStreamUpdateObjectClient) Send(m *payload.Object_Blob) error {
+func (x *filterStreamUpdateObjectClient) Send(m *payload.Update_ObjectRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
@@ -229,7 +243,7 @@ func (x *filterStreamUpdateObjectClient) Recv() (*payload.Object_StreamLocation,
 	return m, nil
 }
 
-func (c *filterClient) MultiUpdateObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Locations, error) {
+func (c *filterClient) MultiUpdateObject(ctx context.Context, in *payload.Update_MultiObjectRequest, opts ...grpc.CallOption) (*payload.Object_Locations, error) {
 	out := new(payload.Object_Locations)
 	err := c.cc.Invoke(ctx, "/vald.v1.Filter/MultiUpdateObject", in, out, opts...)
 	if err != nil {
@@ -238,7 +252,7 @@ func (c *filterClient) MultiUpdateObject(ctx context.Context, in *payload.Object
 	return out, nil
 }
 
-func (c *filterClient) UpsertObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Location, error) {
+func (c *filterClient) UpsertObject(ctx context.Context, in *payload.Upsert_ObjectRequest, opts ...grpc.CallOption) (*payload.Object_Location, error) {
 	out := new(payload.Object_Location)
 	err := c.cc.Invoke(ctx, "/vald.v1.Filter/UpsertObject", in, out, opts...)
 	if err != nil {
@@ -257,7 +271,7 @@ func (c *filterClient) StreamUpsertObject(ctx context.Context, opts ...grpc.Call
 }
 
 type Filter_StreamUpsertObjectClient interface {
-	Send(*payload.Object_Blob) error
+	Send(*payload.Upsert_ObjectRequest) error
 	Recv() (*payload.Object_StreamLocation, error)
 	grpc.ClientStream
 }
@@ -266,7 +280,7 @@ type filterStreamUpsertObjectClient struct {
 	grpc.ClientStream
 }
 
-func (x *filterStreamUpsertObjectClient) Send(m *payload.Object_Blob) error {
+func (x *filterStreamUpsertObjectClient) Send(m *payload.Upsert_ObjectRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
@@ -278,7 +292,7 @@ func (x *filterStreamUpsertObjectClient) Recv() (*payload.Object_StreamLocation,
 	return m, nil
 }
 
-func (c *filterClient) MultiUpsertObject(ctx context.Context, in *payload.Object_Blob, opts ...grpc.CallOption) (*payload.Object_Locations, error) {
+func (c *filterClient) MultiUpsertObject(ctx context.Context, in *payload.Upsert_MultiObjectRequest, opts ...grpc.CallOption) (*payload.Object_Locations, error) {
 	out := new(payload.Object_Locations)
 	err := c.cc.Invoke(ctx, "/vald.v1.Filter/MultiUpsertObject", in, out, opts...)
 	if err != nil {
@@ -290,16 +304,17 @@ func (c *filterClient) MultiUpsertObject(ctx context.Context, in *payload.Object
 // FilterServer is the server API for Filter service.
 type FilterServer interface {
 	SearchObject(context.Context, *payload.Search_ObjectRequest) (*payload.Search_Response, error)
+	MultiSearchObject(context.Context, *payload.Search_MultiObjectRequest) (*payload.Search_Responses, error)
 	StreamSearchObject(Filter_StreamSearchObjectServer) error
-	InsertObject(context.Context, *payload.Object_Blob) (*payload.Object_Location, error)
+	InsertObject(context.Context, *payload.Insert_ObjectRequest) (*payload.Object_Location, error)
 	StreamInsertObject(Filter_StreamInsertObjectServer) error
-	MultiInsertObject(context.Context, *payload.Object_Blob) (*payload.Object_Locations, error)
-	UpdateObject(context.Context, *payload.Object_Blob) (*payload.Object_Location, error)
+	MultiInsertObject(context.Context, *payload.Insert_MultiObjectRequest) (*payload.Object_Locations, error)
+	UpdateObject(context.Context, *payload.Update_ObjectRequest) (*payload.Object_Location, error)
 	StreamUpdateObject(Filter_StreamUpdateObjectServer) error
-	MultiUpdateObject(context.Context, *payload.Object_Blob) (*payload.Object_Locations, error)
-	UpsertObject(context.Context, *payload.Object_Blob) (*payload.Object_Location, error)
+	MultiUpdateObject(context.Context, *payload.Update_MultiObjectRequest) (*payload.Object_Locations, error)
+	UpsertObject(context.Context, *payload.Upsert_ObjectRequest) (*payload.Object_Location, error)
 	StreamUpsertObject(Filter_StreamUpsertObjectServer) error
-	MultiUpsertObject(context.Context, *payload.Object_Blob) (*payload.Object_Locations, error)
+	MultiUpsertObject(context.Context, *payload.Upsert_MultiObjectRequest) (*payload.Object_Locations, error)
 }
 
 // UnimplementedFilterServer can be embedded to have forward compatible implementations.
@@ -309,34 +324,37 @@ type UnimplementedFilterServer struct {
 func (*UnimplementedFilterServer) SearchObject(ctx context.Context, req *payload.Search_ObjectRequest) (*payload.Search_Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchObject not implemented")
 }
+func (*UnimplementedFilterServer) MultiSearchObject(ctx context.Context, req *payload.Search_MultiObjectRequest) (*payload.Search_Responses, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MultiSearchObject not implemented")
+}
 func (*UnimplementedFilterServer) StreamSearchObject(srv Filter_StreamSearchObjectServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamSearchObject not implemented")
 }
-func (*UnimplementedFilterServer) InsertObject(ctx context.Context, req *payload.Object_Blob) (*payload.Object_Location, error) {
+func (*UnimplementedFilterServer) InsertObject(ctx context.Context, req *payload.Insert_ObjectRequest) (*payload.Object_Location, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InsertObject not implemented")
 }
 func (*UnimplementedFilterServer) StreamInsertObject(srv Filter_StreamInsertObjectServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamInsertObject not implemented")
 }
-func (*UnimplementedFilterServer) MultiInsertObject(ctx context.Context, req *payload.Object_Blob) (*payload.Object_Locations, error) {
+func (*UnimplementedFilterServer) MultiInsertObject(ctx context.Context, req *payload.Insert_MultiObjectRequest) (*payload.Object_Locations, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MultiInsertObject not implemented")
 }
-func (*UnimplementedFilterServer) UpdateObject(ctx context.Context, req *payload.Object_Blob) (*payload.Object_Location, error) {
+func (*UnimplementedFilterServer) UpdateObject(ctx context.Context, req *payload.Update_ObjectRequest) (*payload.Object_Location, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateObject not implemented")
 }
 func (*UnimplementedFilterServer) StreamUpdateObject(srv Filter_StreamUpdateObjectServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamUpdateObject not implemented")
 }
-func (*UnimplementedFilterServer) MultiUpdateObject(ctx context.Context, req *payload.Object_Blob) (*payload.Object_Locations, error) {
+func (*UnimplementedFilterServer) MultiUpdateObject(ctx context.Context, req *payload.Update_MultiObjectRequest) (*payload.Object_Locations, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MultiUpdateObject not implemented")
 }
-func (*UnimplementedFilterServer) UpsertObject(ctx context.Context, req *payload.Object_Blob) (*payload.Object_Location, error) {
+func (*UnimplementedFilterServer) UpsertObject(ctx context.Context, req *payload.Upsert_ObjectRequest) (*payload.Object_Location, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpsertObject not implemented")
 }
 func (*UnimplementedFilterServer) StreamUpsertObject(srv Filter_StreamUpsertObjectServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamUpsertObject not implemented")
 }
-func (*UnimplementedFilterServer) MultiUpsertObject(ctx context.Context, req *payload.Object_Blob) (*payload.Object_Locations, error) {
+func (*UnimplementedFilterServer) MultiUpsertObject(ctx context.Context, req *payload.Upsert_MultiObjectRequest) (*payload.Object_Locations, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MultiUpsertObject not implemented")
 }
 
@@ -358,6 +376,24 @@ func _Filter_SearchObject_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(FilterServer).SearchObject(ctx, req.(*payload.Search_ObjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Filter_MultiSearchObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(payload.Search_MultiObjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FilterServer).MultiSearchObject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/vald.v1.Filter/MultiSearchObject",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FilterServer).MultiSearchObject(ctx, req.(*payload.Search_MultiObjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -389,7 +425,7 @@ func (x *filterStreamSearchObjectServer) Recv() (*payload.Search_ObjectRequest, 
 }
 
 func _Filter_InsertObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(payload.Object_Blob)
+	in := new(payload.Insert_ObjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -401,7 +437,7 @@ func _Filter_InsertObject_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/vald.v1.Filter/InsertObject",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FilterServer).InsertObject(ctx, req.(*payload.Object_Blob))
+		return srv.(FilterServer).InsertObject(ctx, req.(*payload.Insert_ObjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -412,7 +448,7 @@ func _Filter_StreamInsertObject_Handler(srv interface{}, stream grpc.ServerStrea
 
 type Filter_StreamInsertObjectServer interface {
 	Send(*payload.Object_StreamLocation) error
-	Recv() (*payload.Object_Blob, error)
+	Recv() (*payload.Insert_ObjectRequest, error)
 	grpc.ServerStream
 }
 
@@ -424,8 +460,8 @@ func (x *filterStreamInsertObjectServer) Send(m *payload.Object_StreamLocation) 
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *filterStreamInsertObjectServer) Recv() (*payload.Object_Blob, error) {
-	m := new(payload.Object_Blob)
+func (x *filterStreamInsertObjectServer) Recv() (*payload.Insert_ObjectRequest, error) {
+	m := new(payload.Insert_ObjectRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -433,7 +469,7 @@ func (x *filterStreamInsertObjectServer) Recv() (*payload.Object_Blob, error) {
 }
 
 func _Filter_MultiInsertObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(payload.Object_Blob)
+	in := new(payload.Insert_MultiObjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -445,13 +481,13 @@ func _Filter_MultiInsertObject_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/vald.v1.Filter/MultiInsertObject",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FilterServer).MultiInsertObject(ctx, req.(*payload.Object_Blob))
+		return srv.(FilterServer).MultiInsertObject(ctx, req.(*payload.Insert_MultiObjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Filter_UpdateObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(payload.Object_Blob)
+	in := new(payload.Update_ObjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -463,7 +499,7 @@ func _Filter_UpdateObject_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/vald.v1.Filter/UpdateObject",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FilterServer).UpdateObject(ctx, req.(*payload.Object_Blob))
+		return srv.(FilterServer).UpdateObject(ctx, req.(*payload.Update_ObjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -474,7 +510,7 @@ func _Filter_StreamUpdateObject_Handler(srv interface{}, stream grpc.ServerStrea
 
 type Filter_StreamUpdateObjectServer interface {
 	Send(*payload.Object_StreamLocation) error
-	Recv() (*payload.Object_Blob, error)
+	Recv() (*payload.Update_ObjectRequest, error)
 	grpc.ServerStream
 }
 
@@ -486,8 +522,8 @@ func (x *filterStreamUpdateObjectServer) Send(m *payload.Object_StreamLocation) 
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *filterStreamUpdateObjectServer) Recv() (*payload.Object_Blob, error) {
-	m := new(payload.Object_Blob)
+func (x *filterStreamUpdateObjectServer) Recv() (*payload.Update_ObjectRequest, error) {
+	m := new(payload.Update_ObjectRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -495,7 +531,7 @@ func (x *filterStreamUpdateObjectServer) Recv() (*payload.Object_Blob, error) {
 }
 
 func _Filter_MultiUpdateObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(payload.Object_Blob)
+	in := new(payload.Update_MultiObjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -507,13 +543,13 @@ func _Filter_MultiUpdateObject_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/vald.v1.Filter/MultiUpdateObject",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FilterServer).MultiUpdateObject(ctx, req.(*payload.Object_Blob))
+		return srv.(FilterServer).MultiUpdateObject(ctx, req.(*payload.Update_MultiObjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Filter_UpsertObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(payload.Object_Blob)
+	in := new(payload.Upsert_ObjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -525,7 +561,7 @@ func _Filter_UpsertObject_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/vald.v1.Filter/UpsertObject",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FilterServer).UpsertObject(ctx, req.(*payload.Object_Blob))
+		return srv.(FilterServer).UpsertObject(ctx, req.(*payload.Upsert_ObjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -536,7 +572,7 @@ func _Filter_StreamUpsertObject_Handler(srv interface{}, stream grpc.ServerStrea
 
 type Filter_StreamUpsertObjectServer interface {
 	Send(*payload.Object_StreamLocation) error
-	Recv() (*payload.Object_Blob, error)
+	Recv() (*payload.Upsert_ObjectRequest, error)
 	grpc.ServerStream
 }
 
@@ -548,8 +584,8 @@ func (x *filterStreamUpsertObjectServer) Send(m *payload.Object_StreamLocation) 
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *filterStreamUpsertObjectServer) Recv() (*payload.Object_Blob, error) {
-	m := new(payload.Object_Blob)
+func (x *filterStreamUpsertObjectServer) Recv() (*payload.Upsert_ObjectRequest, error) {
+	m := new(payload.Upsert_ObjectRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -557,7 +593,7 @@ func (x *filterStreamUpsertObjectServer) Recv() (*payload.Object_Blob, error) {
 }
 
 func _Filter_MultiUpsertObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(payload.Object_Blob)
+	in := new(payload.Upsert_MultiObjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -569,7 +605,7 @@ func _Filter_MultiUpsertObject_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/vald.v1.Filter/MultiUpsertObject",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FilterServer).MultiUpsertObject(ctx, req.(*payload.Object_Blob))
+		return srv.(FilterServer).MultiUpsertObject(ctx, req.(*payload.Upsert_MultiObjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -581,6 +617,10 @@ var _Filter_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SearchObject",
 			Handler:    _Filter_SearchObject_Handler,
+		},
+		{
+			MethodName: "MultiSearchObject",
+			Handler:    _Filter_MultiSearchObject_Handler,
 		},
 		{
 			MethodName: "InsertObject",
