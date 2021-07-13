@@ -27,6 +27,30 @@ var (
 	ctx context.Context
 
 	data []Datum
+
+	insertConfig = &payload.Insert_Config{
+		SkipStrictExistCheck: true,
+	}
+
+	searchNum    = 3
+	searchConfig = &payload.Search_Config{
+		Num:     uint32(searchNum),
+		Radius:  -1.0,
+		Epsilon: 0.1,
+		Timeout: 3000000000,
+	}
+
+	updateConfig = &payload.Update_Config{
+		SkipStrictExistCheck: true,
+	}
+
+	upsertConfig = &payload.Upsert_Config{
+		SkipStrictExistCheck: true,
+	}
+
+	removeConfig = &payload.Remove_Config{
+		SkipStrictExistCheck: true,
+	}
 )
 
 type Datum struct {
@@ -89,9 +113,7 @@ func TestE2E(t *testing.T) {
 				Id:     data[0].ID,
 				Vector: data[0].Vector,
 			},
-			Config: &payload.Insert_Config{
-				SkipStrictExistCheck: true,
-			},
+			Config: insertConfig,
 		}
 
 		result, err := client.Insert(ctx, req)
@@ -120,9 +142,7 @@ func TestE2E(t *testing.T) {
 					Id:     data[i].ID,
 					Vector: data[i].Vector,
 				},
-				Config: &payload.Insert_Config{
-					SkipStrictExistCheck: true,
-				},
+				Config: insertConfig,
 			})
 		}
 
@@ -200,9 +220,7 @@ func TestE2E(t *testing.T) {
 					Id:     data[i].ID,
 					Vector: data[i].Vector,
 				},
-				Config: &payload.Insert_Config{
-					SkipStrictExistCheck: true,
-				},
+				Config: insertConfig,
 			}
 
 			err = stream.Send(req)
@@ -389,12 +407,7 @@ func TestE2E(t *testing.T) {
 
 		req := &payload.Search_Request{
 			Vector: data[0].Vector,
-			Config: &payload.Search_Config{
-				Num:     3,
-				Radius:  -1.0,
-				Epsilon: 0.1,
-				Timeout: 3000000000,
-			},
+			Config: searchConfig,
 		}
 
 		result, err := client.Search(ctx, req)
@@ -406,8 +419,8 @@ func TestE2E(t *testing.T) {
 			t.Fatal("result is nil")
 		}
 
-		if len(result.GetResults()) != 3 {
-			t.Errorf("result length is not expected. received: %d, expected: %d", len(result.GetResults()), 3)
+		if len(result.GetResults()) != searchNum {
+			t.Errorf("result length is not expected. received: %d, expected: %d", len(result.GetResults()), searchNum)
 		}
 	})
 
@@ -415,18 +428,11 @@ func TestE2E(t *testing.T) {
 		beforeEach()
 		defer afterEach()
 
-		cfg := &payload.Search_Config{
-			Num:     3,
-			Radius:  -1.0,
-			Epsilon: 0.1,
-			Timeout: 3000000000,
-		}
-
 		requests := make([]*payload.Search_Request, 0)
 		for i := 1; i < 11; i++ {
 			requests = append(requests, &payload.Search_Request{
 				Vector: data[i].Vector,
-				Config: cfg,
+				Config: searchConfig,
 			})
 		}
 
@@ -444,8 +450,8 @@ func TestE2E(t *testing.T) {
 		}
 
 		for _, result := range results.GetResponses() {
-			if len(result.GetResults()) != 3 {
-				t.Errorf("result length is not expected. received: %d, expected: %d", len(result.GetResults()), 3)
+			if len(result.GetResults()) != searchNum {
+				t.Errorf("result length is not expected. received: %d, expected: %d", len(result.GetResults()), searchNum)
 			}
 		}
 	})
@@ -492,8 +498,8 @@ func TestE2E(t *testing.T) {
 					continue
 				}
 
-				if len(res.GetResults()) != 3 {
-					t.Errorf("result length is not expected. received: %d, expected: %d", len(res.GetResults()), 3)
+				if len(res.GetResults()) != searchNum {
+					t.Errorf("result length is not expected. received: %d, expected: %d", len(res.GetResults()), searchNum)
 				}
 			}
 		}()
@@ -501,13 +507,7 @@ func TestE2E(t *testing.T) {
 		for i := 11; i < 21; i++ {
 			req := &payload.Search_Request{
 				Vector: data[i].Vector,
-				Config: &payload.Search_Config{
-
-					Num:     3,
-					Radius:  -1.0,
-					Epsilon: 0.1,
-					Timeout: 3000000000,
-				},
+				Config: searchConfig,
 			}
 
 			err = stream.Send(req)
@@ -526,13 +526,8 @@ func TestE2E(t *testing.T) {
 		defer afterEach()
 
 		req := &payload.Search_IDRequest{
-			Id: data[0].ID,
-			Config: &payload.Search_Config{
-				Num:     3,
-				Radius:  -1.0,
-				Epsilon: 0.1,
-				Timeout: 3000000000,
-			},
+			Id:     data[0].ID,
+			Config: searchConfig,
 		}
 
 		result, err := client.SearchByID(ctx, req)
@@ -544,8 +539,8 @@ func TestE2E(t *testing.T) {
 			t.Fatal("result is nil")
 		}
 
-		if len(result.GetResults()) != 3 {
-			t.Errorf("result length is not expected. received: %d, expected: %d", len(result.GetResults()), 3)
+		if len(result.GetResults()) != searchNum {
+			t.Errorf("result length is not expected. received: %d, expected: %d", len(result.GetResults()), searchNum)
 		}
 	})
 
@@ -553,18 +548,11 @@ func TestE2E(t *testing.T) {
 		beforeEach()
 		defer afterEach()
 
-		cfg := &payload.Search_Config{
-			Num:     3,
-			Radius:  -1.0,
-			Epsilon: 0.1,
-			Timeout: 3000000000,
-		}
-
 		requests := make([]*payload.Search_IDRequest, 0)
 		for i := 1; i < 11; i++ {
 			requests = append(requests, &payload.Search_IDRequest{
 				Id:     data[i].ID,
-				Config: cfg,
+				Config: searchConfig,
 			})
 		}
 
@@ -582,8 +570,8 @@ func TestE2E(t *testing.T) {
 		}
 
 		for _, result := range results.GetResponses() {
-			if len(result.GetResults()) != 3 {
-				t.Errorf("result length is not expected. received: %d, expected: %d", len(result.GetResults()), 3)
+			if len(result.GetResults()) != searchNum {
+				t.Errorf("result length is not expected. received: %d, expected: %d", len(result.GetResults()), searchNum)
 			}
 		}
 	})
@@ -630,22 +618,16 @@ func TestE2E(t *testing.T) {
 					continue
 				}
 
-				if len(res.GetResults()) != 3 {
-					t.Errorf("result length is not expected. received: %d, expected: %d", len(res.GetResults()), 3)
+				if len(res.GetResults()) != searchNum {
+					t.Errorf("result length is not expected. received: %d, expected: %d", len(res.GetResults()), searchNum)
 				}
 			}
 		}()
 
 		for i := 11; i < 21; i++ {
 			req := &payload.Search_IDRequest{
-				Id: data[i].ID,
-				Config: &payload.Search_Config{
-
-					Num:     3,
-					Radius:  -1.0,
-					Epsilon: 0.1,
-					Timeout: 3000000000,
-				},
+				Id:     data[i].ID,
+				Config: searchConfig,
 			}
 
 			err = stream.Send(req)
@@ -670,9 +652,7 @@ func TestE2E(t *testing.T) {
 				Id:     data[0].ID,
 				Vector: data[1].Vector,
 			},
-			Config: &payload.Update_Config{
-				SkipStrictExistCheck: true,
-			},
+			Config: updateConfig,
 		}
 
 		result, err := client.Update(ctx, req)
@@ -701,9 +681,7 @@ func TestE2E(t *testing.T) {
 					Id:     data[i].ID,
 					Vector: data[i+1].Vector,
 				},
-				Config: &payload.Update_Config{
-					SkipStrictExistCheck: true,
-				},
+				Config: updateConfig,
 			})
 		}
 
@@ -781,9 +759,7 @@ func TestE2E(t *testing.T) {
 					Id:     data[i].ID,
 					Vector: data[i+1].Vector,
 				},
-				Config: &payload.Update_Config{
-					SkipStrictExistCheck: true,
-				},
+				Config: updateConfig,
 			}
 
 			err = stream.Send(req)
@@ -808,9 +784,7 @@ func TestE2E(t *testing.T) {
 				Id:     data[0].ID,
 				Vector: data[0].Vector,
 			},
-			Config: &payload.Upsert_Config{
-				SkipStrictExistCheck: true,
-			},
+			Config: upsertConfig,
 		}
 
 		result, err := client.Upsert(ctx, req)
@@ -839,9 +813,7 @@ func TestE2E(t *testing.T) {
 					Id:     data[i].ID,
 					Vector: data[i].Vector,
 				},
-				Config: &payload.Upsert_Config{
-					SkipStrictExistCheck: true,
-				},
+				Config: upsertConfig,
 			})
 		}
 
@@ -918,9 +890,7 @@ func TestE2E(t *testing.T) {
 					Id:     data[i].ID,
 					Vector: data[i].Vector,
 				},
-				Config: &payload.Upsert_Config{
-					SkipStrictExistCheck: true,
-				},
+				Config: upsertConfig,
 			}
 
 			err = stream.Send(req)
@@ -944,9 +914,7 @@ func TestE2E(t *testing.T) {
 			Id: &payload.Object_ID{
 				Id: data[0].ID,
 			},
-			Config: &payload.Remove_Config{
-				SkipStrictExistCheck: true,
-			},
+			Config: removeConfig,
 		}
 
 		result, err := client.Remove(ctx, req)
@@ -974,9 +942,7 @@ func TestE2E(t *testing.T) {
 				Id: &payload.Object_ID{
 					Id: data[i].ID,
 				},
-				Config: &payload.Remove_Config{
-					SkipStrictExistCheck: true,
-				},
+				Config: removeConfig,
 			})
 		}
 
@@ -1053,9 +1019,7 @@ func TestE2E(t *testing.T) {
 				Id: &payload.Object_ID{
 					Id: data[i].ID,
 				},
-				Config: &payload.Remove_Config{
-					SkipStrictExistCheck: true,
-				},
+				Config: removeConfig,
 			}
 
 			err = stream.Send(req)
