@@ -188,7 +188,6 @@ func TestE2E(t *testing.T) {
 					}
 
 					t.Errorf("error: %s", err)
-
 					continue
 				}
 
@@ -298,7 +297,7 @@ func TestE2E(t *testing.T) {
 		}
 
 		if result.GetId() == "" {
-			t.Error("expected ID is not found.")
+			t.Error("expected ID is not found")
 		}
 	})
 
@@ -351,7 +350,6 @@ func TestE2E(t *testing.T) {
 					}
 
 					t.Errorf("error: %s", err)
-
 					continue
 				}
 
@@ -727,7 +725,6 @@ func TestE2E(t *testing.T) {
 					}
 
 					t.Errorf("error: %s", err)
-
 					continue
 				}
 
@@ -988,7 +985,6 @@ func TestE2E(t *testing.T) {
 					}
 
 					t.Errorf("error: %s", err)
-
 					continue
 				}
 
