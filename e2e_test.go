@@ -84,17 +84,16 @@ func readJSON() error {
 	return json.Unmarshal(bytes, &data)
 }
 
-func beforeEach() {
-	var err error
-
+func beforeEach() (err error) {
 	conn, err = grpc.DialContext(ctx, addr, grpc.WithInsecure())
 	if err != nil {
-		fmt.Errorf("error: %s", err)
-		os.Exit(1)
+		return err
 	}
 
 	client = vald.NewValdClient(conn)
 	agentClient = core.NewAgentClient(conn)
+
+	return nil
 }
 
 func afterEach() {
@@ -105,8 +104,11 @@ func TestE2E(t *testing.T) {
 	// Insert
 
 	t.Run(`Test for Insert operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Insert_Request{
 			Vector: &payload.Object_Vector{
@@ -131,8 +133,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for MultiInsert operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		requests := make([]*payload.Insert_Request, 0)
 
@@ -167,8 +172,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for StreamInsert operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		stream, err := client.StreamInsert(ctx)
 		if err != nil {
@@ -236,34 +244,43 @@ func TestE2E(t *testing.T) {
 	// Agent
 
 	t.Run(`Test for CreateIndex operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Control_CreateIndexRequest{
 			PoolSize: 10000,
 		}
 
-		_, err := agentClient.CreateIndex(ctx, req)
+		_, err = agentClient.CreateIndex(ctx, req)
 		if err != nil {
 			t.Errorf("error: %s", err)
 		}
 	})
 
 	t.Run(`Test for SaveIndex operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Empty{}
 
-		_, err := agentClient.SaveIndex(ctx, req)
+		_, err = agentClient.SaveIndex(ctx, req)
 		if err != nil {
 			t.Errorf("error: %s", err)
 		}
 	})
 
 	t.Run(`Test for IndexInfo operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Empty{}
 
@@ -284,8 +301,11 @@ func TestE2E(t *testing.T) {
 	// Exists
 
 	t.Run(`Test for Exists operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Object_ID{
 			Id: data[0].ID,
@@ -303,8 +323,11 @@ func TestE2E(t *testing.T) {
 
 	// GetObject
 	t.Run(`Test for GetObject operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Object_VectorRequest{
 			Id: &payload.Object_ID{
@@ -329,8 +352,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for StreamGetObject operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		stream, err := client.StreamGetObject(ctx)
 		if err != nil {
@@ -400,8 +426,11 @@ func TestE2E(t *testing.T) {
 	// Search
 
 	t.Run(`Test for Search operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Search_Request{
 			Vector: data[0].Vector,
@@ -423,8 +452,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for MultiSearch operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		requests := make([]*payload.Search_Request, 0)
 		for i := 1; i < 11; i++ {
@@ -455,8 +487,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for StreamSearch operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		stream, err := client.StreamSearch(ctx)
 		if err != nil {
@@ -520,8 +555,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for SearchByID operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Search_IDRequest{
 			Id:     data[0].ID,
@@ -543,8 +581,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for MultiSearchByID operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		requests := make([]*payload.Search_IDRequest, 0)
 		for i := 1; i < 11; i++ {
@@ -575,8 +616,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for StreamSearchByID operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		stream, err := client.StreamSearchByID(ctx)
 		if err != nil {
@@ -642,8 +686,11 @@ func TestE2E(t *testing.T) {
 	// Update
 
 	t.Run(`Test for Update operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Update_Request{
 			Vector: &payload.Object_Vector{
@@ -668,8 +715,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for MultiUpdate operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		requests := make([]*payload.Update_Request, 0)
 
@@ -704,8 +754,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for StreamUpdate operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		stream, err := client.StreamUpdate(ctx)
 		if err != nil {
@@ -773,8 +826,11 @@ func TestE2E(t *testing.T) {
 	// Upsert
 
 	t.Run(`Test for Upsert operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Upsert_Request{
 			Vector: &payload.Object_Vector{
@@ -799,8 +855,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for MultiUpsert operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		requests := make([]*payload.Upsert_Request, 0)
 
@@ -835,8 +894,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for StreamUpsert operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		stream, err := client.StreamUpsert(ctx)
 		if err != nil {
@@ -904,8 +966,11 @@ func TestE2E(t *testing.T) {
 	// Remove
 
 	t.Run(`Test for Remove operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		req := &payload.Remove_Request{
 			Id: &payload.Object_ID{
@@ -929,8 +994,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for MultiRemove operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		requests := make([]*payload.Remove_Request, 0)
 
@@ -964,8 +1032,11 @@ func TestE2E(t *testing.T) {
 	})
 
 	t.Run(`Test for StreamRemove operation`, func(t *testing.T) {
-		beforeEach()
-		defer afterEach()
+		err := beforeEach()
+		if err != nil {
+			t.Fatalf("error: %s", err)
+		}
+		t.Cleanup(afterEach)
 
 		stream, err := client.StreamRemove(ctx)
 		if err != nil {
