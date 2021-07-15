@@ -63,13 +63,13 @@ func init() {
 
 	err := readJSON()
 	if err != nil {
-		fmt.Errorf("error: %s", err)
+		fmt.Printf("error: %s", err)
 		os.Exit(1)
 	}
 }
 
 func readJSON() error {
-	f, err := os.Open("wordvecs1000.json")
+	f, err := os.Open("../wordvecs1000.json")
 	if err != nil {
 		return err
 	}
