@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"os"
 	"sync"
 	"testing"
@@ -63,8 +63,7 @@ func init() {
 
 	err := readJSON()
 	if err != nil {
-		fmt.Printf("error: %s", err)
-		os.Exit(1)
+		log.Fatalf("error: %s", err)
 	}
 }
 
