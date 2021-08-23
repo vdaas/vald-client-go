@@ -1,0 +1,25 @@
+module github.com/vdaas/vald-client-go
+
+go 1.17
+
+replace (
+	cloud.google.com/go => cloud.google.com/go master
+	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery master
+	github.com/envoyproxy/protoc-gen-validate => github.com/envoyproxy/protoc-gen-validate latest
+	github.com/golang/protobuf => github.com/golang/protobuf latest
+	github.com/google/go-cmp => github.com/google/go-cmp latest
+	golang.org/x/crypto => golang.org/x/crypto latest
+	golang.org/x/lint => golang.org/x/lint latest
+	golang.org/x/mod => golang.org/x/mod latest
+	golang.org/x/net => golang.org/x/net latest
+	golang.org/x/oauth2 => golang.org/x/oauth2 latest
+	golang.org/x/sync => golang.org/x/sync latest
+	golang.org/x/sys => golang.org/x/sys latest
+	golang.org/x/text => golang.org/x/text latest
+	golang.org/x/tools => golang.org/x/tools latest
+	golang.org/x/xerrors => golang.org/x/xerrors latest
+	google.golang.org/appengine => google.golang.org/appengine latest
+	google.golang.org/genproto => google.golang.org/genproto latest
+	google.golang.org/grpc => google.golang.org/grpc latest
+	google.golang.org/protobuf => google.golang.org/protobuf latest
+)
