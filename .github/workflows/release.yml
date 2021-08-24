@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: rinx/setup-k3d@v0.0.2
+      - uses: rinx/setup-k3d@v0.0.3
         with:
           version: latest
           name: vald
@@ -45,6 +45,14 @@ jobs:
           kubectl get pods
         env:
           VALUES: https://raw.githubusercontent.com/vdaas/vald/master/.github/helm/values/values-lb.yaml
+      - name: Fetch golang version
+        run: |
+          GO_VERSION=`make version/go`
+          echo "::set-output name=version::${GO_VERSION}"
+        id: golang_version
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ steps.golang_version.outputs.version }}
       - name: Download data
         run: |
           curl -OL https://raw.githubusercontent.com/rinx/word2vecjson/master/data/wordvecs1000.json
@@ -53,7 +61,7 @@ jobs:
           kubectl port-forward statefulset/vald-agent-ngt 8081:8081 &
           pid=$!
 
-          go test -v ./v1/e2e_test.go
+          go test -v ./tests/v1/e2e_test.go
 
           kill $pid
   release:

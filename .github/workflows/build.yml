@@ -1,4 +1,4 @@
-name: build protobuf
+name: sync generated protobuf implementation
 on:
   repository_dispatch:
 
@@ -7,8 +7,6 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: Install Protoc
-        uses: arduino/setup-protoc@v1
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
@@ -16,10 +14,7 @@ jobs:
           echo "checkout master"
           git checkout master
       - run: |
-          echo "build"
-          export GOPATH=$HOME/go
-          export PATH=$GOPATH/bin:$PATH
-          make vald-origin
+          echo "synchronizing pbgos..."
           make all
           make vald/sha/update
       - run: |

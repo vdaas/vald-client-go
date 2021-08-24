@@ -25,34 +25,8 @@ VALD_SHA     = VALD_SHA
 VALD_VERSION = VALD_VERSION
 VALD_DIR     = vald-origin
 
-PWD    := $(eval PWD := $(shell pwd))$(PWD)
-GOPATH := $(eval GOPATH := $(shell go env GOPATH))$(GOPATH)
-
-PROTO_ROOT  = $(VALD_DIR)/apis/proto
-PBGO_TMP    = tmp
-
-PROTOS = \
-	v1/agent/core/agent.proto \
-	v1/gateway/vald/vald.proto \
-	v1/vald/filter.proto \
-	v1/vald/insert.proto \
-	v1/vald/object.proto \
-	v1/vald/remove.proto \
-	v1/vald/search.proto \
-	v1/vald/update.proto \
-	v1/vald/upsert.proto \
-	v1/payload/payload.proto
-
-PROTOS     := $(PROTOS:%=$(PROTO_ROOT)/%)
-PBGOS       = $(PROTOS:$(PROTO_ROOT)/%.proto=%.pb.go)
-
-PROTODIRS  := $(shell find $(PROTO_ROOT) -type d | sed -e "s%$(PROTO_ROOT)/%%g" | grep -v "$(PROTO_ROOT)")
-
-PROTO_PATHS = \
-	$(PWD) \
-	$(PWD)/$(VALD_DIR) \
-	$(GOPATH)/src \
-	$(GOPATH)/src/github.com/gogo/googleapis
+ROOTDIR = $(eval ROOTDIR := $(shell git rev-parse --show-toplevel))$(ROOTDIR)
+GO_VERSION := $(eval GO_VERSION := $(shell cat GO_VERSION))$(GO_VERSION)
 
 MAKELISTS   = Makefile
 
@@ -63,21 +37,9 @@ blue   = /bin/echo -e "\x1b[34m\#\# $1\x1b[0m"
 pink   = /bin/echo -e "\x1b[35m\#\# $1\x1b[0m"
 cyan   = /bin/echo -e "\x1b[36m\#\# $1\x1b[0m"
 
-define go-get
-	GO111MODULE=on go get -u $1
-endef
-
-define go-get-no-mod
-	GO111MODULE=off go get -u $1
-endef
-
-define mkdir
-	mkdir -p $1
-endef
-
 .PHONY: all
 ## execute clean and proto
-all: clean proto mod
+all: clean sync/v1 mod clean
 
 .PHONY: help
 ## print all available commands
@@ -98,36 +60,22 @@ help:
 .PHONY: clean
 ## clean
 clean:
-	rm -rf $(PROTODIRS)
-	rm -rf $(PBGO_TMP)
-	rm -rf $(VALD_DIR)
-
-.PHONY: proto
-## build proto
-proto: \
-	$(PBGOS) \
-	v1/vald/vald.go
-
-$(PROTODIRS):
-	$(call mkdir, $@)
-	$(call rm, -rf, $@/*)
-
-v1/vald/vald.go: $(VALD_DIR)
-	cp $(VALD_DIR)/apis/grpc/$@ $@
-
-$(PBGOS): $(VALD_DIR) proto/deps $(PROTODIRS)
-	@$(call green, "generating .pb.go files...")
-	$(call mkdir, $(PBGO_TMP))
-	protoc \
-		$(PROTO_PATHS:%=-I %) \
-		--gogofast_out=plugins=grpc:$(PBGO_TMP) \
-		$(patsubst %.pb.go,$(PROTO_ROOT)/%.proto,$@)
-	mv $(PBGO_TMP)/$(VALDREPO)/apis/grpc/$@ $(dir $@)
-	rm -rf $(PBGO_TMP)
-	sed -i 's:$(VALDREPO)/apis/grpc:$(PKGREPO):g' $@
+	-@rm -rf $(VALD_DIR)
 
 $(VALD_DIR):
 	git clone --depth 1 https://$(VALDREPO) $(VALD_DIR)
+
+.PHONY: sync/v1
+## sync/v1 synchronize VALD_DIR's generated v1 pbgo to v1 dir and patch it
+sync/v1: $(VALD_DIR)
+	rm -rf $(ROOTDIR)/v1
+	cp -r $(VALD_DIR)/apis/grpc/v1 $(ROOTDIR)/v1
+	rm -rf $(ROOTDIR)/v1/discoverer \
+	    $(ROOTDIR)/v1/agent/sidecar \
+	    $(ROOTDIR)/v1/manager
+	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/net/grpc/codes%google.golang.org/grpc/codes%g"
+	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/net/grpc/status%google.golang.org/grpc/status%g"
+	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/apis/grpc/v1%github.com/vdaas/vald-client-go/v1%g"
 
 .PHONY: vald/sha/print
 ## print VALD_SHA value
@@ -139,6 +87,7 @@ vald/sha/print:
 vald/sha/update: $(VALD_DIR)
 	(cd $(VALD_DIR); git rev-parse HEAD > ../$(VALD_SHA))
 	cp $(VALD_DIR)/versions/VALD_VERSION $(VALD_VERSION)
+	cp $(VALD_DIR)/versions/GO_VERSION $(ROOTDIR)/GO_VERSION
 
 .PHONY: vald/version/print
 ## print VALD_VERSION value
@@ -148,95 +97,12 @@ vald/version/print:
 .PHONY: mod
 ## update go.mod
 mod:
+	rm -rf $(ROOTDIR)/go.mod $(ROOTDIR)/go.sum
+	cp $(ROOTDIR)/go.mod.default $(ROOTDIR)/go.mod
 	GOPRIVATE=$(VALDREPO) go mod tidy
 
-.PHONY: proto/deps
-## install proto deps
-proto/deps: \
-	$(GOPATH)/bin/protoc-gen-doc \
-	$(GOPATH)/bin/protoc-gen-go \
-	$(GOPATH)/bin/protoc-gen-gogo \
-	$(GOPATH)/bin/protoc-gen-gofast \
-	$(GOPATH)/bin/protoc-gen-gogofast \
-	$(GOPATH)/bin/protoc-gen-gogofaster \
-	$(GOPATH)/bin/protoc-gen-gogoslick \
-	$(GOPATH)/bin/protoc-gen-grpc-gateway \
-	$(GOPATH)/bin/protoc-gen-swagger \
-	$(GOPATH)/bin/protoc-gen-validate \
-	$(GOPATH)/bin/prototool \
-	$(GOPATH)/bin/swagger \
-	$(GOPATH)/src/google.golang.org/genproto \
-	$(GOPATH)/src/github.com/protocolbuffers/protobuf \
-	$(GOPATH)/src/github.com/gogo/protobuf \
-	$(GOPATH)/src/github.com/gogo/googleapis \
-	$(GOPATH)/src/github.com/googleapis/googleapis \
-	$(GOPATH)/src/github.com/envoyproxy/protoc-gen-validate
 
-$(GOPATH)/src/github.com/protocolbuffers/protobuf:
-	git clone \
-		--depth 1 \
-		https://github.com/protocolbuffers/protobuf \
-		$(GOPATH)/src/github.com/protocolbuffers/protobuf
-
-$(GOPATH)/src/github.com/gogo/protobuf:
-	git clone \
-		--depth 1 \
-		https://github.com/gogo/protobuf \
-		$(GOPATH)/src/github.com/gogo/protobuf
-
-$(GOPATH)/src/github.com/gogo/googleapis:
-	git clone \
-		--depth 1 \
-		https://github.com/gogo/googleapis \
-		$(GOPATH)/src/github.com/gogo/googleapis
-
-$(GOPATH)/src/github.com/googleapis/googleapis:
-	git clone \
-		--depth 1 \
-		https://github.com/googleapis/googleapis \
-		$(GOPATH)/src/github.com/googleapis/googleapis
-
-$(GOPATH)/src/github.com/envoyproxy/protoc-gen-validate:
-	git clone \
-		--depth 1 \
-		https://github.com/envoyproxy/protoc-gen-validate \
-		$(GOPATH)/src/github.com/envoyproxy/protoc-gen-validate
-
-$(GOPATH)/src/google.golang.org/genproto:
-	$(call go-get, google.golang.org/genproto/...)
-
-$(GOPATH)/bin/protoc-gen-go:
-	$(call go-get, github.com/golang/protobuf/protoc-gen-go)
-
-$(GOPATH)/bin/protoc-gen-gogo:
-	$(call go-get, github.com/gogo/protobuf/protoc-gen-gogo)
-
-$(GOPATH)/bin/protoc-gen-gofast:
-	$(call go-get, github.com/gogo/protobuf/protoc-gen-gofast)
-
-$(GOPATH)/bin/protoc-gen-gogofast:
-	$(call go-get, github.com/gogo/protobuf/protoc-gen-gogofast)
-
-$(GOPATH)/bin/protoc-gen-gogofaster:
-	$(call go-get, github.com/gogo/protobuf/protoc-gen-gogofaster)
-
-$(GOPATH)/bin/protoc-gen-gogoslick:
-	$(call go-get, github.com/gogo/protobuf/protoc-gen-gogoslick)
-
-$(GOPATH)/bin/protoc-gen-grpc-gateway:
-	$(call go-get, github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway)
-
-$(GOPATH)/bin/protoc-gen-swagger:
-	$(call go-get, github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger)
-
-$(GOPATH)/bin/protoc-gen-validate:
-	$(call go-get, github.com/envoyproxy/protoc-gen-validate)
-
-$(GOPATH)/bin/prototool:
-	$(call go-get, github.com/uber/prototool/cmd/prototool)
-
-$(GOPATH)/bin/protoc-gen-doc:
-	$(call go-get, github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc)
-
-$(GOPATH)/bin/swagger:
-	$(call go-get, github.com/go-swagger/go-swagger/cmd/swagger)
+.PHONY: version/go
+## print go version
+version/go:
+	@echo $(GO_VERSION)
