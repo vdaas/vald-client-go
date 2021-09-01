@@ -15,8 +15,21 @@ jobs:
           git checkout master
       - run: |
           echo "synchronizing pbgos..."
-          make all
+          make clean
+          make sync/v1
           make vald/sha/update
+      - name: Fetch golang version
+        run: |
+          GO_VERSION=`make version/go`
+          echo "::set-output name=version::${GO_VERSION}"
+        id: golang_version
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ steps.golang_version.outputs.version }}
+      - run: |
+          echo "updating go modules..."
+          make mod
+          make clean
       - run: |
           echo "commit and push"
           sha=`make vald/sha/print`
