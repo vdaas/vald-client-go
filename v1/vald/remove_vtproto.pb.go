@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2019-2021 vdaas.org vald team <vald@vdaas.org>
+// Copyright (C) 2019-2022 vdaas.org vald team <vald@vdaas.org>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -42,8 +42,11 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RemoveClient interface {
+	// A method to remove an indexed vector.
 	Remove(ctx context.Context, in *payload.Remove_Request, opts ...grpc.CallOption) (*payload.Object_Location, error)
+	// A method to remove multiple indexed vectors by bidirectional streaming.
 	StreamRemove(ctx context.Context, opts ...grpc.CallOption) (Remove_StreamRemoveClient, error)
+	// A method to remove multiple indexed vectors in a single request.
 	MultiRemove(ctx context.Context, in *payload.Remove_MultiRequest, opts ...grpc.CallOption) (*payload.Object_Locations, error)
 }
 
@@ -108,8 +111,11 @@ func (c *removeClient) MultiRemove(ctx context.Context, in *payload.Remove_Multi
 // All implementations must embed UnimplementedRemoveServer
 // for forward compatibility
 type RemoveServer interface {
+	// A method to remove an indexed vector.
 	Remove(context.Context, *payload.Remove_Request) (*payload.Object_Location, error)
+	// A method to remove multiple indexed vectors by bidirectional streaming.
 	StreamRemove(Remove_StreamRemoveServer) error
+	// A method to remove multiple indexed vectors in a single request.
 	MultiRemove(context.Context, *payload.Remove_MultiRequest) (*payload.Object_Locations, error)
 	mustEmbedUnimplementedRemoveServer()
 }

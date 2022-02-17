@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2019-2021 vdaas.org vald team <vald@vdaas.org>
+// Copyright (C) 2019-2022 vdaas.org vald team <vald@vdaas.org>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -42,9 +42,13 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AgentClient interface {
+	// Represent the create index RPC.
 	CreateIndex(ctx context.Context, in *payload.Control_CreateIndexRequest, opts ...grpc.CallOption) (*payload.Empty, error)
+	// Represent the save index RPC.
 	SaveIndex(ctx context.Context, in *payload.Empty, opts ...grpc.CallOption) (*payload.Empty, error)
+	// Represent the create and save index RPC.
 	CreateAndSaveIndex(ctx context.Context, in *payload.Control_CreateIndexRequest, opts ...grpc.CallOption) (*payload.Empty, error)
+	// Represent the RPC to get the agent index information.
 	IndexInfo(ctx context.Context, in *payload.Empty, opts ...grpc.CallOption) (*payload.Info_Index_Count, error)
 }
 
@@ -96,9 +100,13 @@ func (c *agentClient) IndexInfo(ctx context.Context, in *payload.Empty, opts ...
 // All implementations must embed UnimplementedAgentServer
 // for forward compatibility
 type AgentServer interface {
+	// Represent the create index RPC.
 	CreateIndex(context.Context, *payload.Control_CreateIndexRequest) (*payload.Empty, error)
+	// Represent the save index RPC.
 	SaveIndex(context.Context, *payload.Empty) (*payload.Empty, error)
+	// Represent the create and save index RPC.
 	CreateAndSaveIndex(context.Context, *payload.Control_CreateIndexRequest) (*payload.Empty, error)
+	// Represent the RPC to get the agent index information.
 	IndexInfo(context.Context, *payload.Empty) (*payload.Info_Index_Count, error)
 	mustEmbedUnimplementedAgentServer()
 }
