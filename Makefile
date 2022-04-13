@@ -76,6 +76,7 @@ sync/v1: $(VALD_DIR)
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/net/grpc/codes%google.golang.org/grpc/codes%g"
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/net/grpc/status%google.golang.org/grpc/status%g"
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/apis/grpc/v1%github.com/vdaas/vald-client-go/v1%g"
+	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/io%io%g"
 
 .PHONY: vald/sha/print
 ## print VALD_SHA value
