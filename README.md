@@ -14,7 +14,7 @@
 ### example code
 
 ```go
-    // Create a Vald clien connection for Vald cluster.
+	// Create a Vald clien connection for Vald cluster.
 	conn, err := grpc.DialContext(ctx, "addr to cluster", grpc.WithInsecure())
 	if err != nil {
 		log.Fatal(err)
@@ -33,7 +33,7 @@
 		log.Fatal(err)
 	}
 
-    // WARN you may need to wait a minutes until index creation.
+	// WARN you may need to wait a minutes until index creation.
 
 	// Search sample vector.
 	res, err := client.Search(ctx, &payload.Search_Request{
@@ -49,7 +49,7 @@
 		log.Fatal(err)
 	}
 
-    // Remove vector.
+	// Remove vector.
 	_, err := client.Remove(ctx, &payload.Remove_Request{
 		Id: &payload.Object_ID{
 			Id: "id of vector",
