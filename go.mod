@@ -11,16 +11,16 @@ replace (
 	golang.org/x/crypto => golang.org/x/crypto v0.0.0-20220622213112-05595931fe9d
 	golang.org/x/lint => golang.org/x/lint v0.0.0-20210508222113-6edffad5e616
 	golang.org/x/mod => golang.org/x/mod v0.5.1
-	golang.org/x/net => golang.org/x/net v0.0.0-20220630215102-69896b714898
-	golang.org/x/oauth2 => golang.org/x/oauth2 v0.0.0-20220630143837-2104d58473e0
+	golang.org/x/net => golang.org/x/net v0.0.0-20220708220712-1185a9018129
+	golang.org/x/oauth2 => golang.org/x/oauth2 v0.0.0-20220718184931-c8730f7fcb92
 	golang.org/x/sync => golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
-	golang.org/x/sys => golang.org/x/sys v0.0.0-20220702020025-31831981b65f
+	golang.org/x/sys => golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8
 	golang.org/x/text => golang.org/x/text v0.3.7
 	golang.org/x/tools => golang.org/x/tools v0.1.11
 	golang.org/x/xerrors => golang.org/x/xerrors v0.0.0-20220609144429-65e65417b02f
 	google.golang.org/appengine => google.golang.org/appengine v1.6.7
-	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20220630174209-ad1d48641aa7
-	google.golang.org/grpc => google.golang.org/grpc v1.47.0
+	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20220719170305-83ca9fad585f
+	google.golang.org/grpc => google.golang.org/grpc v1.48.0
 	google.golang.org/protobuf => google.golang.org/protobuf v1.28.0
 )
 
