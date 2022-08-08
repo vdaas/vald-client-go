@@ -11,8 +11,8 @@ jobs:
         with:
           fetch-depth: 1
       - run: |
-          echo "checkout master"
-          git checkout master
+          echo "checkout main branch"
+          git checkout main
       - run: |
           echo "synchronizing pbgos..."
           make clean
