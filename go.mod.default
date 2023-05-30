@@ -1,6 +1,6 @@
 module github.com/vdaas/vald-client-go
 
-go 1.19
+go 1.20
 
 replace (
 	cloud.google.com/go => cloud.google.com/go main
@@ -20,6 +20,8 @@ replace (
 	golang.org/x/xerrors => golang.org/x/xerrors latest
 	google.golang.org/appengine => google.golang.org/appengine latest
 	google.golang.org/genproto => google.golang.org/genproto latest
+	google.golang.org/genproto/googleapis/api => google.golang.org/genproto/googleapis/api latest
+	google.golang.org/genproto/googleapis/rpc => google.golang.org/genproto/googleapis/rpc latest
 	google.golang.org/grpc => google.golang.org/grpc latest
 	google.golang.org/protobuf => google.golang.org/protobuf latest
 )
