@@ -2,6 +2,7 @@
 [![License: Apache 2.0](https://img.shields.io/github/license/vdaas/vald-client-go.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 [![release](https://img.shields.io/github/release/vdaas/vald-client-go.svg?style=flat-square)](https://github.com/vdaas/vald-client-go/releases/latest)
 [![Go Reference](https://pkg.go.dev/badge/github.com/vdaas/vald-client-go.svg)](https://pkg.go.dev/github.com/vdaas/vald-client-go)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/vdaas/vald-client-go?filename=go.mod)](https://github.com/vdaas/vald-client-go/blob/main/go.mod#L3)
 [![Codacy Badge](https://img.shields.io/codacy/grade/a6e544eee7bc49e08a000bb10ba3deed?style=flat-square)](https://www.codacy.com/app/i.can.feel.gravity/vald?utm_source=github.com&utm_medium=referral&utm_content=vdaas/vald&utm_campaign=Badge_Grade)
 [![Go Report Card](https://goreportcard.com/badge/github.com/vdaas/vald-client-go?style=flat-square)](https://goreportcard.com/report/github.com/vdaas/vald-client-go)
 [![DepShield Badge](https://depshield.sonatype.org/badges/vdaas/vald-client-go/depshield.svg?style=flat-square)](https://depshield.github.io)
@@ -11,9 +12,6 @@
 [![Slack](https://img.shields.io/badge/slack-join-brightgreen?logo=slack&style=flat-square)](https://join.slack.com/t/vald-community/shared_invite/zt-db2ky9o4-R_9p2sVp8xRwztVa8gfnPA)
 [![Twitter](https://img.shields.io/badge/twitter-follow-blue?logo=twitter&style=flat-square)](https://twitter.com/vdaas_vald)
 
-## Support Version
-Vald: v1.7.x
-Go: v1.20.x
 
 ### example code
 
