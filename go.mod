@@ -28,7 +28,6 @@ replace (
 
 require (
 	github.com/envoyproxy/protoc-gen-validate v1.0.2
-	github.com/planetscale/vtprotobuf v0.5.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20230803162519-f966b187b2e5
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230803162519-f966b187b2e5
 	google.golang.org/grpc v1.57.0
