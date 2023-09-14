@@ -4,17 +4,19 @@ on:
     branches:
       - main
     tags:
-      - '*.*.*'
-      - 'v*.*.*'
-      - '*.*.*-*'
-      - 'v*.*.*-*'
+      - "*.*.*"
+      - "v*.*.*"
+      - "*.*.*-*"
+      - "v*.*.*-*"
   pull_request:
-
 jobs:
   e2e:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
+      - name: Set Git config
+        run: |
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}
       - uses: rinx/setup-k3d@v0.0.4
         with:
           version: latest
@@ -45,14 +47,21 @@ jobs:
           kubectl get pods
         env:
           VALUES: https://raw.githubusercontent.com/vdaas/vald/main/.github/helm/values/values-lb.yaml
-      - name: Fetch golang version
+      - name: Fetch Go version
+        id: go_version
+        shell: bash
         run: |
-          GO_VERSION=`make version/go`
+          GO_VERSION=${GO_VERSION:-`make version/go`}
           echo "version=${GO_VERSION}" >> $GITHUB_OUTPUT
-        id: golang_version
-      - uses: actions/setup-go@v2
+        env:
+          GO_VERSION: ${{ inputs.go_version }}
+      - uses: actions/setup-go@v3
         with:
-          go-version: ${{ steps.golang_version.outputs.version }}
+          go-version: ${{ steps.go_version.outputs.version }}
+      - name: Check Go version
+        shell: bash
+        run: |
+          go version
       - name: Download data
         run: |
           curl -OL https://raw.githubusercontent.com/rinx/word2vecjson/master/data/wordvecs1000.json
@@ -70,7 +79,10 @@ jobs:
       - e2e
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
+      - name: Set Git config
+        run: |
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}
       - name: Create release
         if: startsWith( github.ref, 'refs/tags/')
         id: create_release
