@@ -47,12 +47,12 @@ jobs:
       - run: |
           echo "commit and push"
           sha=`make vald/sha/print`
-          git config --global user.name 'vdaas-ci'
-          git config --global user.email 'vald@vdaas.org'
+          # git config --global user.name 'vdaas-ci'
+          # git config --global user.email 'vald@vdaas.org'
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git add -A
           git commit -S --signoff -m "Update [vald sha: ${sha}]"
-          git push
+          git push -u origin main
         env:
           GITHUB_USER: ${{ secrets.CI_USER }}
           GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}
