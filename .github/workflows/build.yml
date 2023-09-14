@@ -1,15 +1,23 @@
 name: sync generated protobuf implementation
 on:
   repository_dispatch:
-
 jobs:
   build:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 1
+          persist-credentials: false
+      - name: Set Git config
+        run: |
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}
+      - uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
       - run: |
           echo "checkout main branch"
           git checkout main
@@ -18,14 +26,21 @@ jobs:
           make clean
           make sync/v1
           make vald/sha/update
-      - name: Fetch golang version
+      - name: Fetch Go version
+        id: go_version
+        shell: bash
         run: |
-          GO_VERSION=`make version/go`
+          GO_VERSION=${GO_VERSION:-`make version/go`}
           echo "version=${GO_VERSION}" >> $GITHUB_OUTPUT
-        id: golang_version
-      - uses: actions/setup-go@v2
+        env:
+          GO_VERSION: ${{ inputs.go_version }}
+      - uses: actions/setup-go@v3
         with:
-          go-version: ${{ steps.golang_version.outputs.version }}
+          go-version: ${{ steps.go_version.outputs.version }}
+      - name: Check Go version
+        shell: bash
+        run: |
+          go version
       - run: |
           echo "updating go modules..."
           make mod
@@ -33,17 +48,24 @@ jobs:
       - run: |
           echo "commit and push"
           sha=`make vald/sha/print`
-          git config --global user.name 'VDaaS org'
-          git config --global user.email 'ci@vdaas.org'
-          git remote set-url origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
-          git add .
-          git commit -m "Update [vald sha: ${sha}]"
-          git push
+          git config --global user.name 'vdaas-ci'
+          git config --global user.email 'vald@vdaas.org'
+          # git config --global user.name 'VDaaS org'
+          # git config --global user.email 'ci@vdaas.org'
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git add -A
+          # git commit -m "Update [vald sha: ${sha}]"
+          git commit -S --signoff -m "Update [vald sha: ${sha}]"
+          git push -u origin main
         env:
           GITHUB_USER: ${{ secrets.CI_USER }}
           GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}
       - continue-on-error: true
         run: |
           version=`make vald/version/print`
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git tag ${version}
-          git push --tags
+          git push -u origin --tags
+        env:
+          GITHUB_USER: ${{ secrets.CI_USER }}
+          GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}

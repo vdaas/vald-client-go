@@ -72,11 +72,14 @@ sync/v1: $(VALD_DIR)
 	cp -r $(VALD_DIR)/apis/grpc/v1 $(ROOTDIR)/v1
 	rm -rf $(ROOTDIR)/v1/discoverer \
 	    $(ROOTDIR)/v1/agent/sidecar \
-	    $(ROOTDIR)/v1/manager
+	    $(ROOTDIR)/v1/manager \
+	    $(ROOTDIR)/v1/rpc
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/net/grpc/codes%google.golang.org/grpc/codes%g"
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/net/grpc/status%google.golang.org/grpc/status%g"
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/apis/grpc/v1%github.com/vdaas/vald-client-go/v1%g"
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/io%io%g"
+	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/sync%sync%g"
+	rm -rf $(VALD_DIR)
 
 .PHONY: vald/sha/print
 ## print VALD_SHA value
