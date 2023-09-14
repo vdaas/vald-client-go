@@ -2,7 +2,7 @@
 // Copyright (C) 2019-2023 vdaas.org vald team <vald@vdaas.org>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
+// You may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
 //    https://www.apache.org/licenses/LICENSE-2.0
@@ -116,13 +116,15 @@ const (
 	StreamLinearSearchObjectRPCName = "StreamLinearSearchObject"
 	StreamSearchObjectRPCName       = "StreamSearchObject"
 
-	RemoveRPCName       = "Remove"
-	StreamRemoveRPCName = "StreamRemove"
-	MultiRemoveRPCName  = "MultiRemove"
+	RemoveRPCName            = "Remove"
+	StreamRemoveRPCName      = "StreamRemove"
+	MultiRemoveRPCName       = "MultiRemove"
+	RemoveByTimestampRPCName = "RemoveByTimestamp"
 
-	ExistsRPCName          = "Exists"
-	GetObjectRPCName       = "GetObject"
-	StreamGetObjectRPCName = "StreamGetObject"
+	ExistsRPCName           = "Exists"
+	GetObjectRPCName        = "GetObject"
+	StreamGetObjectRPCName  = "StreamGetObject"
+	StreamListObjectRPCName = "StreamListObject"
 )
 
 type client struct {
