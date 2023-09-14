@@ -12,11 +12,11 @@ jobs:
       - name: Set Git config
         run: |
           git config --global --add safe.directory ${GITHUB_WORKSPACE}
-      - uses: crazy-max/ghaction-import-gpg@v4
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
+      # - uses: crazy-max/ghaction-import-gpg@v4
+      #   with:
+      #     gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+      #     git_user_signingkey: true
+      #     git_commit_gpgsign: true
       - run: |
           echo "checkout main branch"
           git checkout main
@@ -49,9 +49,12 @@ jobs:
           sha=`make vald/sha/print`
           # git config --global user.name 'vdaas-ci'
           # git config --global user.email 'vald@vdaas.org'
+          git config --global user.name 'VDaaS org'
+          git config --global user.email 'ci@vdaas.org'
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git add -A
-          git commit -S --signoff -m "Update [vald sha: ${sha}]"
+          git commit -m "Update [vald sha: ${sha}]"
+          # git commit -S --signoff -m "Update [vald sha: ${sha}]"
           git push -u origin main
         env:
           GITHUB_USER: ${{ secrets.CI_USER }}
