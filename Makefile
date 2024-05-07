@@ -24,9 +24,11 @@ PKGREPO     = github.com/$(REPO)/$(PKGNAME)
 VALD_SHA     = VALD_SHA
 VALD_VERSION = VALD_VERSION
 VALD_DIR     = vald-origin
+VALD_CHECKOUT_REF ?= main
 
 ROOTDIR = $(eval ROOTDIR := $(shell git rev-parse --show-toplevel))$(ROOTDIR)
 GO_VERSION := $(eval GO_VERSION := $(shell cat GO_VERSION))$(GO_VERSION)
+TEST_DATASET_PATH = wordvecs1000.json
 
 MAKELISTS   = Makefile
 
@@ -39,7 +41,7 @@ cyan   = /bin/echo -e "\x1b[36m\#\# $1\x1b[0m"
 
 .PHONY: all
 ## execute clean and proto
-all: clean sync/v1 mod clean
+all: clean proto mod clean
 
 .PHONY: help
 ## print all available commands
@@ -62,12 +64,9 @@ help:
 clean:
 	-@rm -rf $(VALD_DIR)
 
-$(VALD_DIR):
-	git clone --depth 1 https://$(VALDREPO) $(VALD_DIR)
-
-.PHONY: sync/v1
-## sync/v1 synchronize VALD_DIR's generated v1 pbgo to v1 dir and patch it
-sync/v1: $(VALD_DIR)
+.PHONY: proto
+## proto synchronize VALD_DIR's generated v1 pbgo to v1 dir and patch it
+proto: $(VALD_DIR)
 	rm -rf $(ROOTDIR)/v1
 	cp -r $(VALD_DIR)/apis/grpc/v1 $(ROOTDIR)/v1
 	rm -rf $(ROOTDIR)/v1/discoverer \
@@ -80,7 +79,19 @@ sync/v1: $(VALD_DIR)
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/apis/grpc/v1%github.com/vdaas/vald-client-go/v1%g"
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/io%io%g"
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/sync%sync%g"
-	rm -rf $(VALD_DIR)
+
+$(VALD_DIR):
+	git clone https://$(VALDREPO) $(VALD_DIR)
+
+.PHONY: vald/checkout
+## checkout vald repository
+vald/checkout: $(VALD_DIR)
+	cd $(VALD_DIR) && git checkout $(VALD_CHECKOUT_REF)
+
+.PHONY: vald/origin/sha/print
+## print origin VALD_SHA value
+vald/origin/sha/print: $(VALD_DIR)
+	@cd $(VALD_DIR) && git rev-parse HEAD | tr -d '\n'
 
 .PHONY: vald/sha/print
 ## print VALD_SHA value
@@ -90,14 +101,49 @@ vald/sha/print:
 .PHONY: vald/sha/update
 ## update VALD_SHA value
 vald/sha/update: $(VALD_DIR)
-	(cd $(VALD_DIR); git rev-parse HEAD > ../$(VALD_SHA))
-	cp $(VALD_DIR)/versions/VALD_VERSION $(VALD_VERSION)
-	cp $(VALD_DIR)/versions/GO_VERSION $(ROOTDIR)/GO_VERSION
+	(cd $(VALD_DIR); git rev-parse HEAD | tr -d '\n' > ../$(VALD_SHA))
 
 .PHONY: vald/version/print
 ## print VALD_VERSION value
 vald/version/print:
 	@cat $(VALD_VERSION)
+
+.PHONY: vald/client/version/print
+## print VALD_CLIENT_JAVA_VERSION value
+vald/client/version/print: vald/version/print
+
+.PHONY: vald/client/version/update
+## update VALD_CLIENT_JAVA_VERSION value
+vald/client/version/update: $(VALD_DIR)
+	cp $(VALD_DIR)/versions/VALD_VERSION $(VALD_VERSION)
+	cp $(VALD_DIR)/versions/GO_VERSION $(ROOTDIR)/GO_VERSION
+
+.PHONY: test
+## Execute test
+test: $(TEST_DATASET_PATH)
+	go test -v ./tests/v1/e2e_test.go
+
+$(TEST_DATASET_PATH):
+	curl -L https://raw.githubusercontent.com/rinx/word2vecjson/master/data/wordvecs1000.json -o $(TEST_DATASET_PATH)
+
+.PHONY: ci/deps/install
+## install deps for CI environment
+ci/deps/install:
+	@echo "Nothing do be done"
+
+.PHONY: ci/deps/update
+## update deps for CI environment
+ci/deps/update: mod
+
+.PHONY: ci/package/prepare
+## prepare for publich
+ci/package/prepare:
+	@echo "Nothing do be done"
+
+.PHONY: ci/package/publish
+## publich packages
+ci/package/publish:
+	@echo "Nothing do be done"
 
 .PHONY: mod
 ## update go.mod
