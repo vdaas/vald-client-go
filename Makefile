@@ -64,9 +64,9 @@ help:
 clean:
 	-@rm -rf $(VALD_DIR)
 
-.PHONY: proto
-## proto synchronize VALD_DIR's generated v1 pbgo to v1 dir and patch it
-proto: $(VALD_DIR)
+.PHONY: sync/v1
+## sync/v1 synchronize VALD_DIR's generated v1 pbgo to v1 dir and patch it
+sync/v1: $(VALD_DIR)
 	rm -rf $(ROOTDIR)/v1
 	cp -r $(VALD_DIR)/apis/grpc/v1 $(ROOTDIR)/v1
 	rm -rf $(ROOTDIR)/v1/discoverer \
@@ -79,6 +79,10 @@ proto: $(VALD_DIR)
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/apis/grpc/v1%github.com/vdaas/vald-client-go/v1%g"
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/io%io%g"
 	find $(ROOTDIR)/v1/* -name '*.go' | xargs sed -i -E "s%github.com/vdaas/vald/internal/sync%sync%g"
+
+.PHONY: proto
+## build proto
+proto: sync/v1
 
 $(VALD_DIR):
 	git clone https://$(VALDREPO) $(VALD_DIR)
