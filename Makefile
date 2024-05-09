@@ -41,7 +41,7 @@ cyan   = /bin/echo -e "\x1b[36m\#\# $1\x1b[0m"
 
 .PHONY: all
 ## execute clean and proto
-all: clean proto mod clean
+all: clean sync/v1 mod clean
 
 .PHONY: help
 ## print all available commands
