@@ -129,7 +129,7 @@ $(TEST_DATASET_PATH):
 .PHONY: ci/deps/install
 ## install deps for CI environment
 ci/deps/install:
-	@echo "Nothing do be done"
+	@echo "Nothing to do"
 
 .PHONY: ci/deps/update
 ## update deps for CI environment
@@ -138,12 +138,12 @@ ci/deps/update: mod
 .PHONY: ci/package/prepare
 ## prepare for publich
 ci/package/prepare:
-	@echo "Nothing do be done"
+	@echo "Nothing to do"
 
 .PHONY: ci/package/publish
 ## publich packages
 ci/package/publish:
-	@echo "Nothing do be done"
+	@echo "Nothing to do"
 
 .PHONY: mod
 ## update go.mod
