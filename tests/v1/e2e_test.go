@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"sync"
@@ -75,7 +74,7 @@ func readJSON() error {
 
 	defer f.Close()
 
-	bytes, err := ioutil.ReadAll(f)
+	bytes, err := io.ReadAll(f)
 	if err != nil {
 		return err
 	}
@@ -283,7 +282,7 @@ func TestE2E(t *testing.T) {
 
 		req := &payload.Empty{}
 
-		result, err := agentClient.IndexInfo(ctx, req)
+		result, err := client.IndexInfo(ctx, req)
 		if err != nil {
 			t.Errorf("error: %s", err)
 		}
