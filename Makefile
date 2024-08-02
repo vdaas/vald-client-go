@@ -140,7 +140,7 @@ ci/deps/install:
 
 .PHONY: ci/deps/update
 ## update deps for CI environment
-ci/deps/update: mod
+ci/deps/update: mod sync/k3d/mk
 
 .PHONY: ci/package/prepare
 ## prepare for publich
