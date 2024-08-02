@@ -26,6 +26,9 @@ VALD_VERSION = VALD_VERSION
 VALD_DIR     = vald-origin
 VALD_CHECKOUT_REF ?= main
 
+K3D_MAKEFILE_URL=https://raw.githubusercontent.com/vdaas/vald/main/Makefile.d/k3d.mk
+K3D_MAKEFILE=Makefile.d/k3d.mk
+
 ROOTDIR = $(eval ROOTDIR := $(shell git rev-parse --show-toplevel))$(ROOTDIR)
 GO_VERSION := $(eval GO_VERSION := $(shell cat GO_VERSION))$(GO_VERSION)
 TEST_DATASET_PATH = wordvecs1000.json
@@ -137,7 +140,7 @@ ci/deps/install:
 
 .PHONY: ci/deps/update
 ## update deps for CI environment
-ci/deps/update: mod
+ci/deps/update: mod sync/k3d/mk
 
 .PHONY: ci/package/prepare
 ## prepare for publich
@@ -160,3 +163,12 @@ mod:
 ## print go version
 version/go:
 	@echo $(GO_VERSION)
+
+Makefile.d:
+	mkdir -p Makefile.d
+
+sync/k3d/mk: Makefile.d
+	rm -rf $(K3D_MAKEFILE)
+	curl -fsSLo $(K3D_MAKEFILE) $(K3D_MAKEFILE_URL)
+
+include $(K3D_MAKEFILE)
