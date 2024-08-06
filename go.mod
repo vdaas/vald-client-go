@@ -15,7 +15,7 @@ replace (
 	golang.org/x/oauth2 => golang.org/x/oauth2 v0.22.0
 	golang.org/x/sync => golang.org/x/sync v0.8.0
 	golang.org/x/sys => golang.org/x/sys v0.23.0
-	golang.org/x/text => golang.org/x/text v0.16.0
+	golang.org/x/text => golang.org/x/text v0.17.0
 	golang.org/x/tools => golang.org/x/tools v0.23.0
 	golang.org/x/xerrors => golang.org/x/xerrors v0.0.0-20240716161551-93cc26a95ae9
 	google.golang.org/appengine => google.golang.org/appengine v1.6.8
