@@ -3,20 +3,20 @@ module github.com/vdaas/vald-client-go
 go 1.21
 
 replace (
-	cloud.google.com/go => cloud.google.com/go v0.115.1-0.20240805171347-baa1c4076e47
-	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.62.1-0.20240805171347-baa1c4076e47
+	cloud.google.com/go => cloud.google.com/go v0.115.1-0.20240806224437-dbf480c2b924
+	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.62.1-0.20240806224437-dbf480c2b924
 	github.com/envoyproxy/protoc-gen-validate => github.com/envoyproxy/protoc-gen-validate v1.1.0
 	github.com/golang/protobuf => github.com/golang/protobuf v1.5.4
 	github.com/google/go-cmp => github.com/google/go-cmp v0.6.0
-	golang.org/x/crypto => golang.org/x/crypto v0.25.0
+	golang.org/x/crypto => golang.org/x/crypto v0.26.0
 	golang.org/x/lint => golang.org/x/lint v0.0.0-20210508222113-6edffad5e616
 	golang.org/x/mod => golang.org/x/mod v0.20.0
-	golang.org/x/net => golang.org/x/net v0.27.0
+	golang.org/x/net => golang.org/x/net v0.28.0
 	golang.org/x/oauth2 => golang.org/x/oauth2 v0.22.0
 	golang.org/x/sync => golang.org/x/sync v0.8.0
 	golang.org/x/sys => golang.org/x/sys v0.23.0
-	golang.org/x/text => golang.org/x/text v0.16.0
-	golang.org/x/tools => golang.org/x/tools v0.23.0
+	golang.org/x/text => golang.org/x/text v0.17.0
+	golang.org/x/tools => golang.org/x/tools v0.24.0
 	golang.org/x/xerrors => golang.org/x/xerrors v0.0.0-20240716161551-93cc26a95ae9
 	google.golang.org/appengine => google.golang.org/appengine v1.6.8
 	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20240805194559-2c9e96a0b5d4
@@ -37,6 +37,6 @@ require (
 
 require (
 	golang.org/x/net v0.26.0 // indirect
-	golang.org/x/sys v0.22.0 // indirect
-	golang.org/x/text v0.16.0 // indirect
+	golang.org/x/sys v0.23.0 // indirect
+	golang.org/x/text v0.17.0 // indirect
 )
