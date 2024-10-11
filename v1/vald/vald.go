@@ -95,6 +95,7 @@ const (
 	UpdateObjectRPCName       = "UpdateObject"
 	StreamUpdateObjectRPCName = "StreamUpdateObject"
 	MultiUpdateObjectRPCName  = "MultiUpdateObject"
+	UpdateTimestampRPCName    = "UpdateTimestamp"
 
 	UpsertRPCName             = "Upsert"
 	StreamUpsertRPCName       = "StreamUpsert"
@@ -139,6 +140,7 @@ const (
 	IndexDetailRPCName           = "IndexDetail"
 	IndexStatisticsRPCName       = "IndexStatistics"
 	IndexStatisticsDetailRPCName = "IndexStatisticsDetail"
+	IndexPropertyRPCName         = "IndexProperty"
 )
 
 type client struct {
