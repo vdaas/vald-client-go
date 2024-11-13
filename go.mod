@@ -5,13 +5,13 @@ go 1.22.7
 toolchain go1.23.3
 
 replace (
-	cloud.google.com/go => cloud.google.com/go v0.116.1-0.20241108223822-f072178f6fd9
-	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.64.1-0.20241108223822-f072178f6fd9
+	cloud.google.com/go => cloud.google.com/go v0.116.1-0.20241112223829-08cf30534b76
+	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.64.1-0.20241112223829-08cf30534b76
 	github.com/envoyproxy/protoc-gen-validate => github.com/envoyproxy/protoc-gen-validate v1.1.0
 	github.com/golang/protobuf => github.com/golang/protobuf v1.5.4
 	github.com/google/go-cmp => github.com/google/go-cmp v0.6.0
 	golang.org/x/crypto => golang.org/x/crypto v0.29.0
-	golang.org/x/lint => golang.org/x/lint v0.0.0-20210508222113-6edffad5e616
+	golang.org/x/lint => golang.org/x/lint v0.0.0-20241112194109-818c5a804067
 	golang.org/x/mod => golang.org/x/mod v0.22.0
 	golang.org/x/net => golang.org/x/net v0.31.0
 	golang.org/x/oauth2 => golang.org/x/oauth2 v0.24.0
