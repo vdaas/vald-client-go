@@ -1,27 +1,27 @@
 module github.com/vdaas/vald-client-go
 
-go 1.21
+go 1.23.3
 
 replace (
 	cloud.google.com/go => cloud.google.com/go main
 	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery main
-	github.com/envoyproxy/protoc-gen-validate => github.com/envoyproxy/protoc-gen-validate latest
-	github.com/golang/protobuf => github.com/golang/protobuf latest
-	github.com/google/go-cmp => github.com/google/go-cmp latest
-	golang.org/x/crypto => golang.org/x/crypto latest
-	golang.org/x/lint => golang.org/x/lint latest
-	golang.org/x/mod => golang.org/x/mod latest
-	golang.org/x/net => golang.org/x/net latest
-	golang.org/x/oauth2 => golang.org/x/oauth2 latest
-	golang.org/x/sync => golang.org/x/sync latest
-	golang.org/x/sys => golang.org/x/sys latest
-	golang.org/x/text => golang.org/x/text latest
-	golang.org/x/tools => golang.org/x/tools latest
-	golang.org/x/xerrors => golang.org/x/xerrors latest
-	google.golang.org/appengine => google.golang.org/appengine latest
-	google.golang.org/genproto => google.golang.org/genproto latest
-	google.golang.org/genproto/googleapis/api => google.golang.org/genproto/googleapis/api latest
-	google.golang.org/genproto/googleapis/rpc => google.golang.org/genproto/googleapis/rpc latest
-	google.golang.org/grpc => google.golang.org/grpc latest
-	google.golang.org/protobuf => google.golang.org/protobuf latest
+	github.com/envoyproxy/protoc-gen-validate => github.com/envoyproxy/protoc-gen-validate upgrade
+	github.com/golang/protobuf => github.com/golang/protobuf upgrade
+	github.com/google/go-cmp => github.com/google/go-cmp upgrade
+	golang.org/x/crypto => golang.org/x/crypto upgrade
+	golang.org/x/lint => golang.org/x/lint upgrade
+	golang.org/x/mod => golang.org/x/mod upgrade
+	golang.org/x/net => golang.org/x/net upgrade
+	golang.org/x/oauth2 => golang.org/x/oauth2 upgrade
+	golang.org/x/sync => golang.org/x/sync upgrade
+	golang.org/x/sys => golang.org/x/sys upgrade
+	golang.org/x/text => golang.org/x/text upgrade
+	golang.org/x/tools => golang.org/x/tools upgrade
+	golang.org/x/xerrors => golang.org/x/xerrors upgrade
+	google.golang.org/appengine => google.golang.org/appengine upgrade
+	google.golang.org/genproto => google.golang.org/genproto upgrade
+	google.golang.org/genproto/googleapis/api => google.golang.org/genproto/googleapis/api upgrade
+	google.golang.org/genproto/googleapis/rpc => google.golang.org/genproto/googleapis/rpc upgrade
+	google.golang.org/grpc => google.golang.org/grpc upgrade
+	google.golang.org/protobuf => google.golang.org/protobuf upgrade
 )

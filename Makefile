@@ -156,6 +156,7 @@ ci/package/publish:
 ## update go.mod
 mod:
 	rm -rf $(ROOTDIR)/go.mod $(ROOTDIR)/go.sum
+	sed -i "3s/go [0-9]\+\.[0-9]\+\(\.[0-9]\+\)\?/go $(GO_VERSION)/g" $(ROOTDIR)/go.mod.default
 	cp $(ROOTDIR)/go.mod.default $(ROOTDIR)/go.mod
 	GOPRIVATE=$(VALDREPO) go mod tidy
 
