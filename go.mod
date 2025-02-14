@@ -1,6 +1,6 @@
 module github.com/vdaas/vald-client-go
 
-go 1.23.6
+go 1.24.0
 
 replace (
 	cloud.google.com/go => cloud.google.com/go v0.118.3-0.20250214022311-2f4b04a163f2
