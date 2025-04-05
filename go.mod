@@ -19,9 +19,9 @@ replace (
 	golang.org/x/tools => golang.org/x/tools v0.31.0
 	golang.org/x/xerrors => golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da
 	google.golang.org/appengine => google.golang.org/appengine v1.6.8
-	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20250324211829-b45e905df463
-	google.golang.org/genproto/googleapis/api => google.golang.org/genproto/googleapis/api v0.0.0-20250324211829-b45e905df463
-	google.golang.org/genproto/googleapis/rpc => google.golang.org/genproto/googleapis/rpc v0.0.0-20250324211829-b45e905df463
+	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20250404141209-ee84b53bf3d0
+	google.golang.org/genproto/googleapis/api => google.golang.org/genproto/googleapis/api v0.0.0-20250404141209-ee84b53bf3d0
+	google.golang.org/genproto/googleapis/rpc => google.golang.org/genproto/googleapis/rpc v0.0.0-20250404141209-ee84b53bf3d0
 	google.golang.org/grpc => google.golang.org/grpc v1.71.1
 	google.golang.org/protobuf => google.golang.org/protobuf v1.36.6
 )
@@ -30,7 +30,7 @@ require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.6-20250307204501-0409229c3780.1
 	github.com/planetscale/vtprotobuf v0.6.1-0.20240319094008-0393e58bdf10
 	google.golang.org/genproto/googleapis/api v0.0.0-20250106144421-5f5ef82da422
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250313205543-e70fdf4c4cb4
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250324211829-b45e905df463
 	google.golang.org/grpc v1.71.0
 	google.golang.org/protobuf v1.36.6
 )
