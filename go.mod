@@ -3,19 +3,19 @@ module github.com/vdaas/vald-client-go
 go 1.24.2
 
 replace (
-	cloud.google.com/go => cloud.google.com/go v0.120.1-0.20250403191734-14e8e132d9d5
-	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.67.1-0.20250403191734-14e8e132d9d5
+	cloud.google.com/go => cloud.google.com/go v0.120.1-0.20250405043825-52c02183fabf
+	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.67.1-0.20250405043825-52c02183fabf
 	github.com/envoyproxy/protoc-gen-validate => github.com/envoyproxy/protoc-gen-validate v1.2.1
 	github.com/golang/protobuf => github.com/golang/protobuf v1.5.4
 	github.com/google/go-cmp => github.com/google/go-cmp v0.7.0
-	golang.org/x/crypto => golang.org/x/crypto v0.36.0
+	golang.org/x/crypto => golang.org/x/crypto v0.37.0
 	golang.org/x/lint => golang.org/x/lint v0.0.0-20241112194109-818c5a804067
 	golang.org/x/mod => golang.org/x/mod v0.24.0
 	golang.org/x/net => golang.org/x/net v0.38.0
-	golang.org/x/oauth2 => golang.org/x/oauth2 v0.28.0
-	golang.org/x/sync => golang.org/x/sync v0.12.0
-	golang.org/x/sys => golang.org/x/sys v0.31.0
-	golang.org/x/text => golang.org/x/text v0.23.0
+	golang.org/x/oauth2 => golang.org/x/oauth2 v0.29.0
+	golang.org/x/sync => golang.org/x/sync v0.13.0
+	golang.org/x/sys => golang.org/x/sys v0.32.0
+	golang.org/x/text => golang.org/x/text v0.24.0
 	golang.org/x/tools => golang.org/x/tools v0.31.0
 	golang.org/x/xerrors => golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da
 	google.golang.org/appengine => google.golang.org/appengine v1.6.8
