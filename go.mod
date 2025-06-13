@@ -27,7 +27,7 @@ replace (
 )
 
 require (
-	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.6-20250613055000-fd99550722dc.1
+	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.6-20250613105001-9f2d3c737feb.1
 	github.com/planetscale/vtprotobuf v0.6.1-0.20240319094008-0393e58bdf10
 	google.golang.org/genproto/googleapis/api v0.0.0-20250324211829-b45e905df463
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250528174236-200df99c418a
