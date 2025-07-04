@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2019-2024 vdaas.org vald team <vald@vdaas.org>
+# Copyright (C) 2019-2025 vdaas.org vald team <vald@vdaas.org>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -13,18 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# DO NOT EDIT
-name: "Sync Vald"
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 */2 * * *"
-jobs:
-  sync:
-    uses: vdaas/vald-client-ci/.github/workflows/sync.yaml@main
-    with:
-      client_type: go
-    secrets:
-      CI_USER: ${{ secrets.CI_USER }}
-      CI_TOKEN: ${{ secrets.CI_TOKEN }}
-      GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+
+USR_LOCAL = /usr/local
+BINDIR = $(USR_LOCAL)/bin
