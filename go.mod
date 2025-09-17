@@ -3,8 +3,8 @@ module github.com/vdaas/vald-client-go
 go 1.24.5
 
 replace (
-	cloud.google.com/go => cloud.google.com/go v0.122.1-0.20250912063522-1f119960237f
-	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.70.1-0.20250912063522-1f119960237f
+	cloud.google.com/go => cloud.google.com/go v0.122.1-0.20250917002832-50ea9a05aa78
+	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.70.1-0.20250917002832-50ea9a05aa78
 	github.com/envoyproxy/protoc-gen-validate => github.com/envoyproxy/protoc-gen-validate v1.2.1
 	github.com/golang/protobuf => github.com/golang/protobuf v1.5.4
 	github.com/google/go-cmp => github.com/google/go-cmp v0.7.0
@@ -27,7 +27,7 @@ replace (
 )
 
 require (
-	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.9-20250717185734-6c6e0d3c608e.1
+	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.9-20250912141014-52f32327d4b0.1
 	github.com/planetscale/vtprotobuf v0.6.1-0.20240319094008-0393e58bdf10
 	google.golang.org/genproto/googleapis/api v0.0.0-20250707201910-8d1bb00bc6a7
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250826171959-ef028d996bc1
