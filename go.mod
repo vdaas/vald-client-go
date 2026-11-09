@@ -3,8 +3,8 @@ module github.com/vdaas/vald-client-go
 go 1.27.2
 
 replace (
-	cloud.google.com/go => cloud.google.com/go v0.123.1-0.20261102034311-1fcd6f6c8b55
-	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.86.2-0.20261102080544-867fe707ef38
+	cloud.google.com/go => cloud.google.com/go v0.123.1-0.20261109074437-69a9ad383a6d
+	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.86.3-0.20261109074437-69a9ad383a6d
 	github.com/envoyproxy/protoc-gen-validate => github.com/envoyproxy/protoc-gen-validate v1.3.3
 	github.com/golang/protobuf => github.com/golang/protobuf v1.5.4
 	github.com/google/go-cmp => github.com/google/go-cmp v0.7.0
@@ -19,9 +19,9 @@ replace (
 	golang.org/x/tools => golang.org/x/tools v0.52.0
 	golang.org/x/xerrors => golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da
 	google.golang.org/appengine => google.golang.org/appengine v1.6.8
-	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20261026165753-2ffab32bce7e
-	google.golang.org/genproto/googleapis/api => google.golang.org/genproto/googleapis/api v0.0.0-20261026165753-2ffab32bce7e
-	google.golang.org/genproto/googleapis/rpc => google.golang.org/genproto/googleapis/rpc v0.0.0-20261026165753-2ffab32bce7e
+	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20261104224025-d1e00e9f33ab
+	google.golang.org/genproto/googleapis/api => google.golang.org/genproto/googleapis/api v0.0.0-20261104224025-d1e00e9f33ab
+	google.golang.org/genproto/googleapis/rpc => google.golang.org/genproto/googleapis/rpc v0.0.0-20261104224025-d1e00e9f33ab
 	google.golang.org/grpc => google.golang.org/grpc v1.85.0
 	google.golang.org/protobuf => google.golang.org/protobuf v1.36.12
 )
