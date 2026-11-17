@@ -3,8 +3,8 @@ module github.com/vdaas/vald-client-go
 go 1.27.4
 
 replace (
-	cloud.google.com/go => cloud.google.com/go v0.123.1-0.20261114065109-5036e77df36d
-	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.86.3-0.20261114065109-5036e77df36d
+	cloud.google.com/go => cloud.google.com/go v0.123.1-0.20261116225205-bdd0e43644e4
+	cloud.google.com/go/bigquery => cloud.google.com/go/bigquery v1.86.3-0.20261116225205-bdd0e43644e4
 	github.com/envoyproxy/protoc-gen-validate => github.com/envoyproxy/protoc-gen-validate v1.3.3
 	github.com/golang/protobuf => github.com/golang/protobuf v1.5.4
 	github.com/google/go-cmp => github.com/google/go-cmp v0.7.0
@@ -19,9 +19,9 @@ replace (
 	golang.org/x/tools => golang.org/x/tools v0.52.0
 	golang.org/x/xerrors => golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da
 	google.golang.org/appengine => google.golang.org/appengine v1.6.8
-	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20261110000943-09e21b237f2c
-	google.golang.org/genproto/googleapis/api => google.golang.org/genproto/googleapis/api v0.0.0-20261110000943-09e21b237f2c
-	google.golang.org/genproto/googleapis/rpc => google.golang.org/genproto/googleapis/rpc v0.0.0-20261110000943-09e21b237f2c
+	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20261116203732-fd2c7689a808
+	google.golang.org/genproto/googleapis/api => google.golang.org/genproto/googleapis/api v0.0.0-20261116203732-fd2c7689a808
+	google.golang.org/genproto/googleapis/rpc => google.golang.org/genproto/googleapis/rpc v0.0.0-20261116203732-fd2c7689a808
 	google.golang.org/grpc => google.golang.org/grpc v1.85.0
 	google.golang.org/protobuf => google.golang.org/protobuf v1.36.12
 )
@@ -30,7 +30,7 @@ require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.12-20260825204119-511051f7f437.2
 	github.com/planetscale/vtprotobuf v0.6.1-0.20240319094008-0393e58bdf10
 	google.golang.org/genproto/googleapis/api v0.0.0-20260817212433-ac3dfec99bb1
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20261104224025-d1e00e9f33ab
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20261110000943-09e21b237f2c
 	google.golang.org/grpc v1.83.1
 	google.golang.org/protobuf v1.36.12
 )
